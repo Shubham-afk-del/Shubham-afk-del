@@ -147,10 +147,7 @@ const alt = altText().replace(/"/g, "'");
 // raw HTML (and the <picture> theme switch working) when it starts that way.
 const block = `<!-- LIVE:START -->
 <a href="${links.assistantRepo}">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=${stamp}">
-    <img alt="${alt}" src="./assets/live-light.svg?v=${stamp}" width="100%">
-  </picture>
+  <img alt="${alt}" src="./assets/live-dark.svg?v=${stamp}" width="100%">
 </a>
 <!-- LIVE:END -->`;
 const next = readme.replace(/<!-- LIVE:START -->[\s\S]*?<!-- LIVE:END -->/, block);

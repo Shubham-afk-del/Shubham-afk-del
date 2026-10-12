@@ -372,10 +372,7 @@ const alt = `My contribution graph for the last year: ${cal.totalContributions} 
 // The <a> stays alone on its line so GitHub keeps the block as raw HTML.
 const block = `<!-- CONTRIB:START -->
 <a href="https://github.com/${USER}">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=${stamp}">
-    <img alt="${alt}" src="./assets/contrib-light.svg?v=${stamp}" width="100%">
-  </picture>
+  <img alt="${alt}" src="./assets/contrib-dark.svg?v=${stamp}" width="100%">
 </a>
 <!-- CONTRIB:END -->`;
 const next = readme.replace(/<!-- CONTRIB:START -->[\s\S]*?<!-- CONTRIB:END -->/, block);
