@@ -11,7 +11,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { USER } from "./data.mjs";
-import { doc, r1 } from "./lib/svg.mjs";
+import { doc, mulberry32, r1 } from "./lib/svg.mjs";
 import { measure, textRun } from "./lib/text.mjs";
 
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
@@ -64,11 +64,11 @@ const THEMES = {
 };
 const LEVEL = { NONE: 0, FIRST_QUARTILE: 1, SECOND_QUARTILE: 2, THIRD_QUARTILE: 3, FOURTH_QUARTILE: 4 };
 
-const P = 24; // seconds per loop
+const P = 30; // seconds per loop
 const T_IN = 1.7; // snake leaves the first portal
-const T_OUT = 16.2; // head reaches the second portal
-const T_SHINE = [16.6, 18.0];
-const T_RESTORE = [18.4, 22.0];
+const T_OUT = 22.0; // head reaches the second portal
+const T_SHINE = [22.4, 23.8];
+const T_RESTORE = [24.2, 28.0];
 const W = 1280;
 const CELL = 16;
 const GAP = 5;
@@ -114,10 +114,55 @@ const quad = (a, c, b) => (t) => [
   (1 - t) ** 2 * a[0] + 2 * (1 - t) * t * c[0] + t * t * b[0],
   (1 - t) ** 2 * a[1] + 2 * (1 - t) * t * c[1] + t * t * b[1],
 ];
-const cubic = (a, c1, c2, b) => (t) => [
-  (1 - t) ** 3 * a[0] + 3 * (1 - t) ** 2 * t * c1[0] + 3 * (1 - t) * t * t * c2[0] + t ** 3 * b[0],
-  (1 - t) ** 3 * a[1] + 3 * (1 - t) ** 2 * t * c1[1] + 3 * (1 - t) * t * t * c2[1] + t ** 3 * b[1],
-];
+/**
+ * A random route that visits every day exactly once and never crosses itself:
+ * a Hamiltonian path on the calendar grid, randomised with "backbite" moves
+ * (Mansfield, 1982). Each move joins an end of the path to one of its grid
+ * neighbours and reverses the loop that creates, so the path stays whole.
+ */
+function randomRoute(start, seed, steps) {
+  const key = (c) => c.col * 8 + c.row;
+  const byKey = new Map(start.map((c) => [key(c), c]));
+  const near = new Map(
+    start.map((c) => [
+      c,
+      [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ]
+        .map(([dc, dr]) => byKey.get((c.col + dc) * 8 + c.row + dr))
+        .filter((n) => n && Math.abs(n.col - c.col) + Math.abs(n.row - c.row) === 1),
+    ]),
+  );
+  const path = [...start];
+  const pos = new Map(path.map((c, i) => [c, i]));
+  const reverse = (i, j) => {
+    for (; i < j; i += 1, j -= 1) {
+      [path[i], path[j]] = [path[j], path[i]];
+      pos.set(path[i], i);
+      pos.set(path[j], j);
+    }
+  };
+  const rand = mulberry32(seed);
+  for (let step = 0; step < steps; step += 1) {
+    const atHead = rand() < 0.5;
+    const end = atHead ? path[0] : path[path.length - 1];
+    const options = near.get(end);
+    const k = pos.get(options[Math.floor(rand() * options.length)]);
+    if (atHead && k > 1) reverse(0, k - 1);
+    if (!atHead && k < path.length - 2) reverse(k + 1, path.length - 1);
+  }
+  return path;
+}
+
+/** A 32-bit seed from a string (FNV-1a), so each day gets its own route. */
+function seedOf(text) {
+  let h = 2166136261;
+  for (const ch of text) h = Math.imul(h ^ ch.charCodeAt(0), 16777619) >>> 0;
+  return h;
+}
 
 function build(cal) {
   const weeks = cal.weeks;
@@ -133,46 +178,61 @@ function build(cal) {
     });
   });
 
-  // Serpentine order: down the even weeks, up the odd ones.
-  const order = [...cells].sort((a, b) => a.col - b.col || (a.col % 2 === 0 ? a.row - b.row : b.row - a.row));
-
-  // Path through every cell centre with a gentle wiggle, U-turns between weeks,
-  // and a lead-in from portal A and a lead-out into portal B.
-  const segs = [];
-  const first = center(order[0].col, order[0].row);
-  const portalA = [first[0], first[1] - 46];
-  segs.push({ d: `L${r1(first[0])} ${r1(first[1])}`, len: 46 });
-  order[0].s = 46;
-  let total = 46;
-  for (let i = 1; i < order.length; i += 1) {
-    const a = center(order[i - 1].col, order[i - 1].row);
-    const b = center(order[i].col, order[i].row);
-    let seg;
-    if (order[i].col === order[i - 1].col) {
-      const wig = (i % 2 === 0 ? 1 : -1) * 6;
-      const c = [a[0] + wig, (a[1] + b[1]) / 2];
-      seg = { d: `Q${r1(c[0])} ${r1(c[1])} ${r1(b[0])} ${r1(b[1])}`, len: arcLength(quad(a, c, b)) };
-    } else {
-      const down = order[i - 1].col % 2 === 0; // the even week ran downwards, so the turn bulges below
-      const k = (down ? 1 : -1) * PITCH * 0.75;
-      const c1 = [a[0], a[1] + k];
-      const c2 = [b[0], b[1] + k];
-      seg = {
-        d: `C${r1(c1[0])} ${r1(c1[1])} ${r1(c2[0])} ${r1(c2[1])} ${r1(b[0])} ${r1(b[1])}`,
-        len: arcLength(cubic(a, c1, c2, b)),
-      };
-    }
-    segs.push(seg);
-    total += seg.len;
-    order[i].s = total;
+  // Start from a serpentine (down the even weeks, up the odd ones), then let
+  // the backbite moves scramble it into a new random route for today.
+  const serpentine = [...cells].sort((a, b) => a.col - b.col || (a.col % 2 === 0 ? a.row - b.row : b.row - a.row));
+  const today = weeks.at(-1).contributionDays.at(-1).date;
+  // Of eight routes for today, keep the one that wanders most: the weakest
+  // link between the order of the visit and the week it lands on.
+  const sweepiness = (route) => {
+    const n = route.length;
+    const mi = (n - 1) / 2;
+    const mc = route.reduce((sum, c) => sum + c.col, 0) / n;
+    let num = 0;
+    let di = 0;
+    let dc = 0;
+    route.forEach((c, i) => {
+      num += (i - mi) * (c.col - mc);
+      di += (i - mi) ** 2;
+      dc += (c.col - mc) ** 2;
+    });
+    return Math.abs(num / Math.sqrt(di * dc));
+  };
+  let order;
+  let best = Infinity;
+  for (let i = 0; i < 8; i += 1) {
+    const route = randomRoute(serpentine, seedOf(`${today}#${i}`), 150000);
+    const score = sweepiness(route);
+    if (score < best) [order, best] = [route, score];
   }
-  const lastCell = order.at(-1);
-  const last = center(lastCell.col, lastCell.row);
-  const outDir = lastCell.col % 2 === 0 ? 1 : -1;
-  const portalB = [last[0], last[1] + outDir * 46];
-  segs.push({ d: `L${r1(portalB[0])} ${r1(portalB[1])}`, len: 46 });
-  total += 46;
-  const pathD = `M${r1(portalA[0])} ${r1(portalA[1])}${segs.map((s) => s.d).join("")}`;
+  const unique = new Set(order).size === cells.length && order.length === cells.length;
+  const joined = order.every((c, i) => i === 0 || Math.abs(c.col - order[i - 1].col) + Math.abs(c.row - order[i - 1].row) === 1);
+  if (!unique || !joined) throw new Error("route is not a path through every day");
+
+  // Through every cell centre: straight across a cell, or a rounded corner
+  // (a quadratic through the centre) where the route turns.
+  const pts = order.map((c) => center(c.col, c.row));
+  const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  let pathD = `M${r1(pts[0][0])} ${r1(pts[0][1])}`;
+  let total = PITCH / 2;
+  order[0].s = 0;
+  for (let i = 1; i < order.length - 1; i += 1) {
+    const [a, c, b] = [pts[i - 1], pts[i], pts[i + 1]];
+    const from = mid(a, c);
+    const to = mid(c, b);
+    const straight = (a[0] === c[0] && c[0] === b[0]) || (a[1] === c[1] && c[1] === b[1]);
+    const len = straight ? PITCH : arcLength(quad(from, c, to));
+    pathD += i === 1 ? `L${r1(from[0])} ${r1(from[1])}` : "";
+    pathD += straight ? `L${r1(to[0])} ${r1(to[1])}` : `Q${r1(c[0])} ${r1(c[1])} ${r1(to[0])} ${r1(to[1])}`;
+    order[i].s = total + len / 2;
+    total += len;
+  }
+  const end = pts.at(-1);
+  pathD += `L${r1(end[0])} ${r1(end[1])}`;
+  total += PITCH / 2;
+  order.at(-1).s = total;
+  const portalA = pts[0];
+  const portalB = end;
 
   // Timeline: constant speed from portal A to portal B.
   const v = total / (T_OUT - T_IN);
@@ -208,7 +268,7 @@ function render(t, cal, g) {
   const title = `${cal.totalContributions} contributions in the last year`;
   const tr = textRun(title, "text", 22, 48, 64);
   parts.push(`<g fill="${t.fg}" transform="${tr.transform}">${tr.uses}</g>`);
-  const fig = textRun("FIG. 5 · A SNAKE PAINTS EVERY DAY IT PASSES", "mono", 14, W - 48, 62, { tracking: 1.7, anchor: "end" });
+  const fig = textRun("FIG. 5 · A NEW RANDOM ROUTE EVERY DAY", "mono", 14, W - 48, 62, { tracking: 1.7, anchor: "end" });
   parts.push(`<g fill="${t.muted}" transform="${fig.transform}">${fig.uses}</g>`);
 
   // Month and weekday labels.
@@ -234,7 +294,8 @@ function render(t, cal, g) {
   });
 
   // The cells: the real level, painted when the head passes, restored in the same order.
-  const rank = new Map(g.order.map((c, i) => [c, i]));
+  const lastCol = cal.weeks.length - 1;
+  const sweep = (c) => (c.col + c.row * 0.8) / (lastCol + 6 * 0.8);
   const cellsSvg = g.cells
     .map((c) => {
       const x = g.x0 + c.col * PITCH;
@@ -249,7 +310,7 @@ function render(t, cal, g) {
         times = [0, kt(tc), kt(tc + 0.12), kt(tc + 0.6), 1];
       } else {
         const paint = t.cells[paintLevel(c.col, c.row)];
-        const tr0 = T_RESTORE[0] + (rank.get(c) / g.order.length) * (T_RESTORE[1] - T_RESTORE[0]);
+        const tr0 = T_RESTORE[0] + sweep(c) * (T_RESTORE[1] - T_RESTORE[0]);
         values = [base, base, paint, paint, base, base];
         times = [0, kt(tc), kt(tc + 0.28), kt(tr0), kt(tr0 + 0.45), 1];
       }
@@ -343,14 +404,14 @@ function render(t, cal, g) {
   const css = `
     .c,.lg{stroke:${t.cellStroke};stroke-width:1}
     .c{transform-box:fill-box;transform-origin:center;animation:pop ${P}s cubic-bezier(.2,.9,.3,1.35) infinite backwards}
-    @keyframes pop{0%{transform:scale(.15);opacity:0}2.6%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:1}}
+    @keyframes pop{0%{transform:scale(.15);opacity:0}2.1%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:1}}
     .tongue{transform-box:fill-box;transform-origin:0 50%;animation:flick .9s ease-in-out infinite}
     @keyframes flick{0%,40%,100%{transform:scaleX(0)}55%,80%{transform:scaleX(1)}}
     .spin{transform-box:fill-box;transform-origin:center;animation:spin 1.6s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media (prefers-reduced-motion: reduce){.c,.tongue,.spin{animation:none}}
   `;
-  const desc = `My contribution graph for the last year: ${cal.totalContributions} contributions on ${g.snacks.length} days. In the animation a snake slithers through every day, eats the ${g.snacks.length} days I contributed and grows, paints the rest green, then the graph fades back to the real data.`;
+  const desc = `My contribution graph for the last year: ${cal.totalContributions} contributions on ${g.snacks.length} days. In the animation a snake takes a random route through every day (a new one each morning), eats the ${g.snacks.length} days I contributed and grows, paints the rest green, then the graph fades back to the real data.`;
   return doc({ width: W, height: H, title: title, desc, css, body: parts.join("\n") });
 }
 
@@ -368,7 +429,7 @@ console.log(`${cal.totalContributions} contributions, ${geometry.snacks.length} 
 const readmeUrl = new URL("../README.md", import.meta.url);
 const readme = readFileSync(readmeUrl, "utf8");
 const stamp = now.toISOString().slice(0, 16).replace(/\D/g, "");
-const alt = `My contribution graph for the last year: ${cal.totalContributions} contributions on ${geometry.snacks.length} days. A snake slithers through every day, eats the ${geometry.snacks.length} days I contributed and grows, paints the rest green, then the graph fades back to the real data.`;
+const alt = `My contribution graph for the last year: ${cal.totalContributions} contributions on ${geometry.snacks.length} days. A snake takes a random route through every day, new each morning, eats the ${geometry.snacks.length} days I contributed and grows, paints the rest green, then the graph fades back to the real data.`;
 // The <a> stays alone on its line so GitHub keeps the block as raw HTML.
 const block = `<!-- CONTRIB:START -->
 <a href="https://github.com/${USER}">

@@ -88,8 +88,8 @@ I rate these against evidence and don't round up. Strong means production use on
 
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
-  <img alt="My contribution graph for the last year: 60 contributions on 7 days. A snake slithers through every day, eats the 7 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610121150" width="100%">
+  <img alt="My contribution graph for the last year: 61 contributions on 7 days. A snake takes a random route through every day, new each morning, eats the 7 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610121206" width="100%">
 </a>
 <!-- CONTRIB:END -->
 
-<sub>The header is the Swiss roll from my portfolio's hero, redrawn as an SVG: it unrolls into a flat sheet, scatters into noise and rolls back up. The terminal and the contribution graph are redrawn every morning from live data. The snake paints each day it passes and eats the days I actually contributed; when it's gone, the graph is my real year again.</sub>
+<sub>The header is the Swiss roll from my portfolio's hero, redrawn as an SVG: it unrolls into a flat sheet, scatters into noise and rolls back up. The terminal and the contribution graph are redrawn every morning from live data. The snake takes a new random route every day, paints each day it passes and eats the days I actually contributed; when it's gone, the graph is my real year again.</sub>
