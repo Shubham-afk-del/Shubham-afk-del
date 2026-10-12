@@ -11,6 +11,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { ask, evals } from "./data.mjs";
 import { THEMES, card, corners, doc, gaussian, label, labelWidth, mulberry32, r1, text } from "./lib/svg.mjs";
 import { measure, wrap } from "./lib/text.mjs";
+import { aboutCard, colophonCard, educationCard, experienceCard, skillsCard } from "./lib/cards.mjs";
 
 const OUT = new URL("../assets/", import.meta.url);
 mkdirSync(OUT, { recursive: true });
@@ -219,8 +220,10 @@ function askCard(t) {
   parts.push(`<circle class="ping" cx="${pad + 6}" cy="${y - 6}" r="6" fill="none" stroke="${t.accent}" stroke-width="2" opacity="0.6"/>`);
   parts.push(label("Ask my assistant", 16, pad + 24, y, t.fg).svg);
   parts.push(label(`a real answer · ${ask.capturedAt}`, 16, W - pad, y, t.muted, { anchor: "end" }).svg);
+  y += 40;
+  parts.push(text("It answers from my own case studies, decision records and code, and lists the sources it used.", "text", 19, pad, y, t.muted).svg);
 
-  y += 34;
+  y += 30;
   const qX = W - pad - qW;
   parts.push(`<rect x="${r1(qX)}" y="${y}" width="${r1(qW)}" height="58" rx="29" fill="${t.elev}" stroke="${t.strong}" stroke-width="2"/>`);
   parts.push(text(ask.question, "text", qSize, qX + 28, y + 38, t.fg).svg);
@@ -489,5 +492,10 @@ for (const t of Object.values(THEMES)) {
   save(`header-${t.name}.svg`, header(t));
   for (const b of BUTTONS) save(`btn-${b.file}-${t.name}.svg`, button(t, b));
   save(`ask-${t.name}.svg`, askCard(t));
+  save(`about-${t.name}.svg`, aboutCard(t));
+  save(`experience-${t.name}.svg`, experienceCard(t));
+  save(`skills-${t.name}.svg`, skillsCard(t));
+  save(`education-${t.name}.svg`, educationCard(t));
+  save(`colophon-${t.name}.svg`, colophonCard(t));
   for (const f of figs) save(`${f.file}-${t.name}.svg`, workCard(t, f));
 }

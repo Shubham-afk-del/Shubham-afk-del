@@ -59,3 +59,49 @@ export async function evals() {
 
 export const shortDate = (iso) =>
   new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Europe/London" });
+
+/** The about card: his own words from the portfolio. */
+export const about = [
+  "For three years I was the person on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into concrete directory changes, and I approved every one. That tool is where AI stopped being a subject and became the work.",
+  "Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London, with a dissertation on agentic AI and large language models.",
+  "I'm open to AI and ML internships, including summer 2027 or a placement that counts toward the MSc, and to full-time roles from February 2027.",
+];
+
+export const experience = [
+  { role: "Campus Ambassador", company: "Northeastern University London", place: "London, UK", dates: "Aug 2026 to now", current: true, notes: ["Campus tours, open days and offer-holder events for prospective students and their families."] },
+  {
+    role: "Senior Analyst, IT Support",
+    company: "Capgemini",
+    place: "Noida, India",
+    dates: "Jun 2023 to Dec 2025",
+    notes: [
+      "Managed and prioritised 50+ incidents a day in ServiceNow, consistently meeting SLA targets.",
+      "Built a Python tool that used an LLM to turn prose access requests into proposed Active Directory changes for my approval. It saved me 2 to 5 hours a week.",
+      "Administered accounts, access permissions and endpoint compliance with Active Directory and Tanium.",
+    ],
+  },
+  { role: "Associate, Technical Support", company: "Tech Mahindra", place: "Noida, India", dates: "Aug 2022 to Jun 2023", notes: ["Support for Netgear and Orbi networking devices, with every case managed in Salesforce CRM."] },
+  { role: "Associate, Customer Support", company: "Tech Mahindra", place: "India", dates: "Aug 2021 to May 2022", notes: ["Customer support for the JioMart e-commerce platform in a high-volume contact centre."] },
+];
+
+/** Levels are his own, calibrated against evidence on file. Do not round up. */
+export const skills = {
+  strong: ["ServiceNow", "Active Directory / Tanium"],
+  working: ["Python", "RAG", "Large language models", "Agentic AI", "Scikit-learn", "Pandas / NumPy", "SQL", "JavaScript / TypeScript", "Git", "Salesforce CRM"],
+  familiar: ["NLP", "PyTorch / TensorFlow", "Docker", "AWS", "C++"],
+};
+
+export const education = [
+  { title: "MSc Artificial Intelligence & Computer Science", school: "Northeastern University London · dissertation on agentic AI and LLMs", when: "Jan 2026 to Jan 2027", result: "In progress" },
+  { title: "Postgraduate Diploma, Computer Science", school: "IIIT Bangalore", when: "Jan 2025 to Jan 2026", result: "96.25% · CGPA 3.85 / 4.0", highlight: true },
+  { title: "Bachelor of Computer Applications", school: "Chandigarh University", when: "Sep 2021 to Sep 2024", result: "Completed alongside full-time work" },
+  { title: "Diploma, Computer Science & Engineering", school: "Kalinga University, Raipur", when: "2018 to 2021", result: "81% · first division" },
+];
+
+export const certifications = [
+  { name: "Advanced Certificate in Data Science, NLP", issuer: "IIIT Bangalore and upGrad", date: "Oct 2025" },
+  { name: "Foundations of Responsible AI", issuer: "Northeastern University", date: "Jan 2026" },
+  { name: "AWS Cloud Technical Essentials", issuer: "Amazon Web Services", date: "Apr 2025" },
+  { name: "Foundations of Cybersecurity", issuer: "Google", date: "Apr 2025" },
+  { name: "Python Bootcamp", issuer: "upGrad", date: "Mar 2025" },
+];
