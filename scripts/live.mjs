@@ -7,7 +7,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { USER, evals, links, shortDate } from "./data.mjs";
-import { THEMES, card, doc, label, text } from "./lib/svg.mjs";
+import { crt } from "./lib/crt.mjs";
 import { fit } from "./lib/text.mjs";
 
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
@@ -92,78 +92,32 @@ const day = (iso) =>
   new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "Europe/London" });
 const londonTime = now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" });
 
-const metrics = [
-  [e.recall10.toFixed(2), "recall@10, hybrid + rerank"],
-  [`${e.passed}/${e.cases}`, "answer checks passed"],
-  [e.injections, "prompt injections resisted"],
-  [`${(e.firstWordP50 / 1000).toFixed(1)} s`, "to the first word, median"],
-];
-
 const statuses = [
   deploy ? [deploy.ok, deploy.ok ? `assistant deployed ${day(deploy.date)}` : "assistant deploy failed"] : [false, "assistant deploy unknown"],
   ci ? [ci.ok, ci.ok ? "assistant CI passing" : "assistant CI failing"] : [false, "assistant CI unknown"],
   portfolio ? [portfolio.ok, portfolio.ok ? "portfolio online" : "portfolio unreachable"] : [false, "portfolio unknown"],
 ];
 
-function liveCard(t) {
-  const W = 1280;
-  const H = 516;
-  const pad = 64;
-  const parts = [card(t, W, H)];
-
-  parts.push(`<circle cx="${pad + 6}" cy="68" r="6" fill="${t.accent}"/>`);
-  parts.push(`<circle class="ping" cx="${pad + 6}" cy="68" r="6" fill="none" stroke="${t.accent}" stroke-width="2" opacity="0.6"/>`);
-  parts.push(label("Updated every day", 16, pad + 24, 74, t.fg).svg);
-  parts.push(label(`${shortDate(now.toISOString())}, ${londonTime} London`, 16, W - pad, 74, t.muted, { anchor: "end" }).svg);
-  parts.push(`<path d="M${pad} 104H${W - pad}" stroke="${t.line}" stroke-width="2"/>`);
-
-  // Left: the assistant, measured.
-  parts.push(label("The assistant, measured", 14, pad, 152, t.muted).svg);
-  metrics.forEach(([value, name], i) => {
-    const x = pad + (i % 2) * 280;
-    const y = 222 + Math.floor(i / 2) * 104;
-    parts.push(text(value, "display", 46, x - 2, y, t.fg, { tracking: -1 }).svg);
-    parts.push(label(name, 13, x, y + 30, t.muted).svg);
-  });
-  parts.push(label(`evals/results.json · run ${shortDate(e.measuredAt)}`, 13, pad, 404, t.accentInk).svg);
-
-  // Right: latest commits.
-  const rx = 668;
-  const rw = W - pad - rx;
-  parts.push(`<path d="M632 136V412" stroke="${t.line}" stroke-width="2"/>`);
-  parts.push(label("Latest commits", 14, rx, 152, t.muted).svg);
-  if (commits.length === 0) {
-    parts.push(text("Unavailable right now.", "text", 20, rx, 200, t.muted).svg);
-  }
-  commits.forEach((c, i) => {
-    const y = 190 + i * 62;
-    const d = label(day(c.date), 13, rx, y, t.muted);
-    parts.push(d.svg);
-    parts.push(label(c.repo, 13, rx + d.width + 14, y, t.accentInk).svg);
-    parts.push(text(fit(c.subject, "text", 20, rw), "text", 20, rx, y + 28, t.fg).svg);
-  });
-
-  // Bottom: live checks.
-  parts.push(`<path d="M${pad} 440H${W - pad}" stroke="${t.line}" stroke-width="2"/>`);
-  let sx = pad;
-  statuses.forEach(([ok, str]) => {
-    parts.push(
-      ok
-        ? `<circle cx="${sx + 6}" cy="474" r="6" fill="${t.accent}"/>`
-        : `<circle cx="${sx + 6}" cy="474" r="5" fill="none" stroke="${t.muted}" stroke-width="2"/>`,
-    );
-    const l = label(str, 13, sx + 22, 479, ok ? t.fg : t.muted);
-    parts.push(l.svg);
-    sx += 22 + l.width + 44;
-  });
-
-  const css = `
-    .ping{transform-box:fill-box;transform-origin:center;animation:ping 2.4s ease-out infinite}
-    @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.4);opacity:0}}
-    @media (prefers-reduced-motion: reduce){.ping{animation:none}}
-  `;
-  return doc({ width: W, height: H, title: "Updated every day", desc: altText(), css, body: parts.join("\n") });
-}
+// What the terminal prints after `neofetch`. Values stay within 50 characters.
+const VALUE_W = 600;
+const latest = commits[0];
+const live = [
+  deploy ? (deploy.ok ? `assistant deployed ${day(deploy.date)}` : "assistant deploy failed") : "assistant unknown",
+  ci ? (ci.ok ? "CI passing" : "CI failing") : "CI unknown",
+  portfolio ? (portfolio.ok ? "site up" : "site down") : "site unknown",
+].join(" · ");
+const info = [
+  ["Name", "Shubham Kumar Singh"],
+  ["Role", "AI & ML Engineer"],
+  ["Study", "MSc AI & CS, Northeastern University London"],
+  ["Thesis", "Agentic AI and large language models"],
+  ["Before", "Capgemini, Tech Mahindra · 3+ yrs enterprise IT"],
+  ["Stack", "Python, TypeScript, RAG, LLMs, scikit-learn"],
+  ["Evals", `recall@10 ${e.recall10.toFixed(2)} · ${e.passed}/${e.cases} checks · ${e.injections} injections`],
+  ["Commit", latest ? fit(`${day(latest.date)} · ${latest.repo} · ${latest.subject}`, "mono", 20, VALUE_W) : "unavailable right now"],
+  ["Live", live],
+  ["Open to", "AI/ML internships · full-time from Feb 2027"],
+];
 
 function altText() {
   const m = `The assistant, measured ${shortDate(e.measuredAt)}: recall at 10 of ${e.recall10.toFixed(2)} with hybrid search and reranking, ${e.passed} of ${e.cases} answer checks passed, ${e.injections.replace("/", " of ")} prompt injections resisted, first word after ${(e.firstWordP50 / 1000).toFixed(1)} seconds at the median.`;
@@ -173,10 +127,15 @@ function altText() {
   return `Updated ${shortDate(now.toISOString())}. ${m}${c}${s}`;
 }
 
-for (const t of Object.values(THEMES)) {
-  const svg = liveCard(t);
-  writeFileSync(new URL(`../assets/live-${t.name}.svg`, import.meta.url), svg);
-  console.log(`live-${t.name}.svg ${(svg.length / 1024).toFixed(1)} KB`);
+for (const theme of ["light", "dark"]) {
+  const svg = crt(theme, {
+    info,
+    stamp: `updated daily · ${shortDate(now.toISOString())}, ${londonTime} London`,
+    title: "Updated every day: my terminal running neofetch",
+    desc: altText(),
+  });
+  writeFileSync(new URL(`../assets/live-${theme}.svg`, import.meta.url), svg);
+  console.log(`live-${theme}.svg ${(svg.length / 1024).toFixed(1)} KB`);
 }
 
 // README: refresh the alt text and bust GitHub's image cache.

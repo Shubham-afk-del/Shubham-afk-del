@@ -41,13 +41,13 @@ I built an AI assistant that answers questions about my work from my own case st
 
 ### 03 · Updated every day
 
-A GitHub Action redraws this card each morning from the assistant's committed eval results, my latest commits and live checks on the assistant and the portfolio.
+Every morning a GitHub Action reruns this terminal with fresh numbers: the assistant's committed eval results, my latest commit and live checks on the assistant and the portfolio.
 
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610121057">
-    <img alt="Updated 12 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 11 Oct, portfolio-assistant: Keep the sources inside the screen on phones; 11 Oct, portfolio-assistant: README, environment example and scripts; 11 Oct, portfolio-assistant: Interface: glass console, knowledge galaxy, motion and particles; 11 Oct, portfolio-assistant: Profile, résumé, decision records and index. Assistant deployed 12 Oct, assistant CI passing, portfolio online." src="./assets/live-light.svg?v=202610121057" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610121142">
+    <img alt="Updated 12 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 11 Oct, portfolio-assistant: Keep the sources inside the screen on phones; 11 Oct, portfolio-assistant: README, environment example and scripts; 11 Oct, portfolio-assistant: Interface: glass console, knowledge galaxy, motion and particles; 11 Oct, portfolio-assistant: Profile, résumé, decision records and index. Assistant deployed 12 Oct, assistant CI passing, portfolio online." src="./assets/live-light.svg?v=202610121142" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -93,11 +93,15 @@ I rate these against evidence and don't round up. Strong means production use on
 
 </details>
 
-<br>
+### 07 · My year on GitHub
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Shubham-afk-del/Shubham-afk-del/output/snake-dark.svg">
-  <img alt="My contribution graph, being eaten by a snake" src="https://raw.githubusercontent.com/Shubham-afk-del/Shubham-afk-del/output/snake-light.svg" width="100%">
-</picture>
+<!-- CONTRIB:START -->
+<a href="https://github.com/Shubham-afk-del">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610121143">
+    <img alt="My contribution graph for the last year: 59 contributions on 7 days. A snake slithers through every day, eats the 7 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610121143" width="100%">
+  </picture>
+</a>
+<!-- CONTRIB:END -->
 
-<sub>The header is the Swiss roll from my portfolio's hero, redrawn as an SVG: it unrolls into a flat sheet, scatters into noise and rolls back up. Every figure on this page is drawn by the scripts in this repo, and GitHub Actions redraws them each day.</sub>
+<sub>The header is the Swiss roll from my portfolio's hero, redrawn as an SVG: it unrolls into a flat sheet, scatters into noise and rolls back up. The terminal and the contribution graph are redrawn every morning from live data. The snake paints each day it passes and eats the days I actually contributed; when it's gone, the graph is my real year again.</sub>

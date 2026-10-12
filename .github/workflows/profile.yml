@@ -30,8 +30,13 @@ jobs:
       - name: redraw the figures
         run: node scripts/build.mjs
 
-      - name: refresh the daily card
+      - name: rerun the terminal
         run: node scripts/live.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: redraw the contribution graph and its snake
+        run: node scripts/contrib.mjs
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -42,6 +47,6 @@ jobs:
             echo "Nothing changed."
             exit 0
           fi
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Redraw the daily card"
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Redraw the terminal and the contribution graph"
           git pull -q --rebase origin main
           git push -q
