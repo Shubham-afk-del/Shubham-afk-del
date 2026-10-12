@@ -110,6 +110,15 @@ export function crt(theme, { info, stamp, title, desc }) {
   const out = [];
   out.push(line(prompt, left, sy + 50, PH.text));
   out.push(typed("cmd", line("neofetch", left + promptW, sy + 50, PH.bright), left + promptW, sy + 50, 8 * ADV + 6, 0.8, 1.8, 8));
+  {
+    const steps = [...Array(9).keys()];
+    const times = steps.map((i) => 0.8 + (1.0 * i) / 8);
+    out.push(
+      `<rect x="0" y="${sy + 31}" width="${r1(ADV)}" height="23" fill="${PH.text}" opacity="0">` +
+        `<animate attributeName="x" dur="${P}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${times.map(kt).join(";")}" values="${r1(left + promptW)};${steps.map((i) => r1(left + promptW + i * ADV)).join(";")}"/>` +
+        `<animate attributeName="opacity" dur="${P}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(0.45)};${kt(2.0)}" values="0;1;0"/></rect>`,
+    );
+  }
 
   const cell = 6;
   const px = left;
@@ -159,7 +168,9 @@ export function crt(theme, { info, stamp, title, desc }) {
   const tube =
     `<g transform="translate(${cx} ${cy})"><g>` +
     `<animateTransform attributeName="transform" type="scale" dur="${P}s" repeatCount="indefinite" keyTimes="0;${kt(0.45)};${kt(15.1)};${kt(15.4)};${kt(15.6)};1" values="1 0.004;1 1;1 1;1 0.004;0.003 0.004;0.003 0.004"/>` +
-    `<g transform="translate(${-cx} ${-cy})"><g class="flick" filter="url(#glow)">${out.join("")}</g></g></g></g>`;
+    `<g transform="translate(${-cx} ${-cy})"><g class="flick" filter="url(#glow)"><g>` +
+    `<animateTransform attributeName="transform" type="translate" dur="${P}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(8.6)};${kt(8.66)};${kt(8.72)};${kt(8.8)};${kt(12.4)};${kt(12.45)};${kt(12.52)}" values="0 0;-7 0;5 1;-2 0;0 0;6 0;-4 -1;0 0"/>` +
+    `${out.join("")}</g></g></g></g></g>`;
 
   parts.push(
     `<g clip-path="url(#screen)">`,
@@ -168,6 +179,7 @@ export function crt(theme, { info, stamp, title, desc }) {
     `<rect x="${sx}" y="${sy}" width="${SCREEN.w}" height="${SCREEN.h}" fill="url(#scan)"/>`,
     `<rect x="${sx}" y="${sy}" width="${SCREEN.w}" height="${SCREEN.h}" fill="url(#vig)"/>`,
     `<rect x="${sx}" y="${sy}" width="${SCREEN.w}" height="${SCREEN.h}" fill="#bfffd2" opacity="0"><animate attributeName="opacity" dur="${P}s" repeatCount="indefinite" keyTimes="0;${kt(0.25)};${kt(0.7)};1" values="0;0.32;0;0"/></rect>`,
+    `<rect x="${sx}" y="${sy}" width="${SCREEN.w}" height="${SCREEN.h}" fill="#bfffd2" opacity="0"><animate attributeName="opacity" dur="${P}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(8.6)};${kt(8.72)};${kt(12.4)};${kt(12.5)}" values="0;0.08;0;0.06;0"/></rect>`,
     `<path d="M${sx} ${sy + 40}Q${sx} ${sy} ${sx + 40} ${sy}H${sx + 560}Q${sx + 260} ${sy + 120} ${sx} ${sy + 300}Z" fill="url(#glass)"/>`,
     `</g>`,
   );

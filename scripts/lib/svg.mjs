@@ -103,3 +103,33 @@ export function gaussian(rand) {
   while (u < 1e-12) u = rand();
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * rand());
 }
+
+/**
+ * A short light that runs around a card's border, Magic-UI style. It is
+ * invisible in a still image and switches on once the animation starts.
+ */
+export function beam(t, width, height, radius, { dur = 8, begin = 0.6, len = 110, color } = {}) {
+  const c = color ?? t.accent;
+  const [x, y, w, h, r] = [1, 1, width - 2, height - 2, radius];
+  const d = `M${x + r} ${y}H${x + w - r}A${r} ${r} 0 0 1 ${x + w} ${y + r}V${y + h - r}A${r} ${r} 0 0 1 ${x + w - r} ${y + h}H${x + r}A${r} ${r} 0 0 1 ${x} ${y + h - r}V${y + r}A${r} ${r} 0 0 1 ${x + r} ${y}Z`;
+  const core = len * 0.55;
+  const run = (from) =>
+    `<animate attributeName="stroke-dashoffset" values="${from};${from - 1000}" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/>`;
+  return (
+    `<g opacity="0"><set attributeName="opacity" to="1" begin="${begin}s"/>` +
+    `<path d="${d}" pathLength="1000" fill="none" stroke="${c}" stroke-opacity="0.2" stroke-width="8" stroke-linecap="round" stroke-dasharray="${len} ${1000 - len}" stroke-dashoffset="1000">${run(1000)}</path>` +
+    `<path d="${d}" pathLength="1000" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="${r1(core)} ${r1(1000 - core)}" stroke-dashoffset="${r1(1000 - (len - core))}">${run(r1(1000 - (len - core)))}</path>` +
+    `</g>`
+  );
+}
+
+/** A soft diagonal band of light that sweeps across a card now and then. */
+export function sheen(id, width, height, radius, { dur = 7, begin = 1.2, opacity = 0.07 } = {}) {
+  return (
+    `<clipPath id="${id}"><rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="${radius}"/></clipPath>` +
+    `<linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="${opacity}"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>` +
+    `<g clip-path="url(#${id})"><g transform="skewX(-20)"><rect x="-420" y="-60" width="320" height="${height + 120}" fill="url(#${id}g)" opacity="0">` +
+    `<set attributeName="opacity" to="1" begin="${begin}s"/>` +
+    `<animate attributeName="x" values="-420;${width + 420};${width + 420}" keyTimes="0;0.42;1" dur="${dur}s" begin="${begin}s" repeatCount="indefinite"/></rect></g></g>`
+  );
+}

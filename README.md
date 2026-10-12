@@ -23,7 +23,7 @@
 
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
-  <img alt="Updated 12 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 11 Oct, portfolio-assistant: Keep the sources inside the screen on phones; 11 Oct, portfolio-assistant: README, environment example and scripts; 11 Oct, portfolio-assistant: Interface: glass console, knowledge galaxy, motion and particles; 11 Oct, portfolio-assistant: Profile, résumé, decision records and index. Assistant deployed 12 Oct, assistant CI passing, portfolio online." src="./assets/live-dark.svg?v=202610121214" width="100%">
+  <img alt="Updated 12 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 11 Oct, portfolio-assistant: Keep the sources inside the screen on phones; 11 Oct, portfolio-assistant: README, environment example and scripts; 11 Oct, portfolio-assistant: Interface: glass console, knowledge galaxy, motion and particles; 11 Oct, portfolio-assistant: Profile, résumé, decision records and index. Assistant deployed 12 Oct, assistant CI passing, portfolio online." src="./assets/live-dark.svg?v=202610121331" width="100%">
 </a>
 <!-- LIVE:END -->
 

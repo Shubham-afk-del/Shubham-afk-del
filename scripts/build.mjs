@@ -9,7 +9,7 @@
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { ask, evals } from "./data.mjs";
-import { THEMES, card, corners, doc, gaussian, label, labelWidth, mulberry32, r1, text } from "./lib/svg.mjs";
+import { THEMES, beam, card, corners, doc, gaussian, label, labelWidth, mulberry32, r1, sheen, text } from "./lib/svg.mjs";
 import { measure, wrap } from "./lib/text.mjs";
 import { aboutCard, colophonCard, educationCard, experienceCard, skillsCard } from "./lib/cards.mjs";
 
@@ -95,12 +95,48 @@ function header(t) {
   const nameSize = Math.min(92, (92 * maxText) / measure("Kumar Singh", "display", 92));
   const line = "Now building systems I can show you the numbers for.";
   const serifSize = Math.min(32, (32 * maxText) / measure(line, "serif", 32));
+  const name = (fill) =>
+    text("Shubham", "display", nameSize, left - 4, 188, fill, { tracking: -1.2 }).svg +
+    text("Kumar Singh", "display", nameSize, left - 4, 282, fill, { tracking: -1.2 }).svg;
+
+  // Aurora: soft radial glows that drift behind the figure and the name.
+  const aurora =
+    `<defs>` +
+    `<radialGradient id="au1"><stop offset="0" stop-color="${t.accent}" stop-opacity="0.26"/><stop offset="1" stop-color="${t.accent}" stop-opacity="0"/></radialGradient>` +
+    `<radialGradient id="au2"><stop offset="0" stop-color="#ffb020" stop-opacity="0.16"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/></radialGradient>` +
+    `<radialGradient id="au3"><stop offset="0" stop-color="#ff2e88" stop-opacity="0.12"/><stop offset="1" stop-color="#ff2e88" stop-opacity="0"/></radialGradient>` +
+    `<clipPath id="cardclip"><rect x="2" y="2" width="${W - 4}" height="${H - 4}" rx="21"/></clipPath>` +
+    `<linearGradient id="nshine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}" stop-opacity="0"/><stop offset="0.45" stop-color="${t.accent}" stop-opacity="0.95"/><stop offset="0.6" stop-color="#ffc24d" stop-opacity="0.95"/><stop offset="1" stop-color="#ffc24d" stop-opacity="0"/></linearGradient>` +
+    `<mask id="namemask"><g fill="#fff">${name("#fff")}</g></mask>` +
+    `</defs>` +
+    `<g clip-path="url(#cardclip)">` +
+    `<circle class="au a1" cx="960" cy="190" r="260" fill="url(#au1)"/>` +
+    `<circle class="au a2" cx="1130" cy="330" r="200" fill="url(#au2)"/>` +
+    `<circle class="au a3" cx="300" cy="90" r="300" fill="url(#au3)"/>` +
+    `</g>`;
+
+  // Dust: a few faint motes rising through the card.
+  const rand = mulberry32(0xd057);
+  let dust = "";
+  for (let i = 0; i < 18; i += 1) {
+    const x = r1(40 + rand() * (W - 80));
+    const y = r1(80 + rand() * (H - 120));
+    const rad = r1(0.9 + rand() * 1.6);
+    const dur = r1(7 + rand() * 7);
+    const delay = r1(rand() * 8);
+    dust += `<circle class="mote" cx="${x}" cy="${y}" r="${rad}" fill="${i % 4 === 0 ? t.accent : t.fg}" style="animation-duration:${dur}s;animation-delay:-${delay}s"/>`;
+  }
 
   const parts = [
     card(t, W, H),
+    aurora,
+    `<g clip-path="url(#cardclip)" opacity="0.55">${dust}</g>`,
     label("AI & ML engineer · London, UK", 17, left, 92, t.muted).svg,
-    text("Shubham", "display", nameSize, left - 4, 188, t.fg, { tracking: -1.2 }).svg,
-    text("Kumar Singh", "display", nameSize, left - 4, 282, t.fg, { tracking: -1.2 }).svg,
+    name(t.fg),
+    // A light that sweeps across the name: a moving band, masked by the letters.
+    `<g mask="url(#namemask)"><g transform="skewX(-14)"><rect x="-420" y="96" width="300" height="210" fill="url(#nshine)" opacity="0">` +
+      `<set attributeName="opacity" to="1" begin="1.2s"/>` +
+      `<animate attributeName="x" values="-420;900;900" keyTimes="0;0.4;1" dur="6.5s" begin="1.2s" repeatCount="indefinite"/></rect></g></g>`,
     text(line, "serif", serifSize, left, 334, t.muted).svg,
     `<circle cx="${left + 6}" cy="378" r="6" fill="${t.accent}"/>`,
     `<circle class="ring" cx="${left + 6}" cy="378" r="6" fill="none" stroke="${t.accent}" stroke-width="2" opacity="0.55"/>`,
@@ -110,6 +146,8 @@ function header(t) {
     `<clipPath id="frame"><rect x="${fig.x + 2}" y="${fig.y + 2}" width="${fig.w - 4}" height="${fig.h - 4}"/></clipPath>`,
     `<g clip-path="url(#frame)">${figure(t, fig.x + fig.w / 2, fig.y + fig.h / 2 + 4, fig.w, fig.h)}</g>`,
     `<rect class="prog" x="${fig.x + 18}" y="${fig.y + fig.h - 1}" width="${fig.w - 36}" height="2" fill="${t.accent}" opacity="0.7"/>`,
+    beam(t, W, H, 22, { dur: 9, begin: 0.4, len: 120 }),
+    beam(t, W, H, 22, { dur: 9, begin: 4.9, len: 120, color: "#ffb020" }),
   ];
 
   // Caption: fig. 0, then the three states, lit in step with the loop.
@@ -152,7 +190,16 @@ function header(t) {
     @keyframes ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.8);opacity:0}}
     .prog{transform-box:fill-box;transform-origin:0 50%;animation:prog ${PERIOD}s linear infinite}
     @keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    ${REDUCED(".pts circle,.l1,.l2,.l3,.ring,.prog")}
+    .au{transform-box:fill-box;transform-origin:center}
+    .a1{animation:d1 17s ease-in-out infinite alternate}
+    .a2{animation:d2 13s ease-in-out infinite alternate}
+    .a3{animation:d3 21s ease-in-out infinite alternate}
+    @keyframes d1{to{transform:translate(-90px,40px) scale(1.18)}}
+    @keyframes d2{to{transform:translate(-160px,-60px) scale(.85)}}
+    @keyframes d3{to{transform:translate(140px,50px) scale(1.12)}}
+    .mote{animation:mote 10s linear infinite}
+    @keyframes mote{0%{transform:translateY(20px);opacity:0}20%{opacity:.9}80%{opacity:.9}100%{transform:translateY(-70px);opacity:0}}
+    ${REDUCED(".pts circle,.l1,.l2,.l3,.ring,.prog,.au,.mote")}
   `;
   return doc({
     width: W,
@@ -174,7 +221,7 @@ const ICONS = {
   doc: (c) => `<path d="M8 4H19L25 10V28H8Z" fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round"/><path d="M19 4V10H25M12 16H21M12 21H21" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round"/>`,
 };
 
-function button(t, { label: str, icon, primary }) {
+function button(t, { label: str, icon, primary, index = 0 }) {
   const size = 27;
   const h = 88;
   const textW = measure(str, "display", size, -0.2);
@@ -183,9 +230,11 @@ function button(t, { label: str, icon, primary }) {
   const fg = primary ? t.accentFg : t.fg;
   const parts = [
     `<rect x="1.5" y="1.5" width="${w - 3}" height="${h - 3}" rx="${(h - 3) / 2}" fill="${bg}" stroke="${primary ? t.accent : t.strong}" stroke-width="3"/>`,
+    sheen("bs", w, h, (h - 2) / 2, { dur: 5.5, begin: 1 + index * 0.16, opacity: primary ? 0.45 : 0.16 }),
     `<g transform="translate(32 ${h / 2 - 16})">${ICONS[icon](fg, "ping")}</g>`,
     text(str, "display", size, 32 + 32 + 16, h / 2 + 9.5, fg, { tracking: -0.2 }).svg,
   ];
+  if (primary) parts.push(beam(t, w, h, (h - 2) / 2, { dur: 3.6, begin: 0.6, len: 180, color: "#ffd27a" }));
   const css =
     icon === "live"
       ? `.ping{transform-box:fill-box;transform-origin:center;animation:ping 2.4s ease-out infinite}
@@ -205,9 +254,26 @@ const BUTTONS = [
 
 /* ---------------------------------------------------------------- ask card */
 
+/**
+ * The real exchange, replayed: the question pops in, the assistant "thinks",
+ * the answer streams word by word, then the sources slide in. Every element
+ * is visible in a still image; the SMIL timeline only hides things before
+ * their moment.
+ */
 function askCard(t) {
   const W = 1280;
   const pad = 64;
+  const P = 18; // seconds per replay
+  const OUT = 17.2; // everything fades before the next replay
+  const kt = (sec) => String(Math.round((sec / P) * 10000) / 10000);
+  const appear = (at, { dx = 0, dy = 0 } = {}) => {
+    const fade = `<animate attributeName="opacity" dur="${P}s" repeatCount="indefinite" keyTimes="0;${kt(at)};${kt(at + 0.3)};${kt(OUT)};${kt(OUT + 0.5)};1" values="0;0;1;1;0;0"/>`;
+    const move =
+      dx || dy
+        ? `<animateTransform attributeName="transform" type="translate" dur="${P}s" repeatCount="indefinite" keyTimes="0;${kt(at)};${kt(at + 0.45)};1" values="${dx} ${dy};${dx} ${dy};0 0;0 0" calcMode="spline" keySplines="0 0 1 1;.2 .9 .3 1;0 0 1 1"/>`
+        : "";
+    return fade + move;
+  };
   const answerSize = 25;
   const lineH = 39;
   const lines = wrap(ask.answer, "text", answerSize, 1060);
@@ -225,37 +291,64 @@ function askCard(t) {
 
   y += 30;
   const qX = W - pad - qW;
-  parts.push(`<rect x="${r1(qX)}" y="${y}" width="${r1(qW)}" height="58" rx="29" fill="${t.elev}" stroke="${t.strong}" stroke-width="2"/>`);
-  parts.push(text(ask.question, "text", qSize, qX + 28, y + 38, t.fg).svg);
+  parts.push(
+    `<g>${appear(0.4, { dx: 60 })}<rect x="${r1(qX)}" y="${y}" width="${r1(qW)}" height="58" rx="29" fill="${t.elev}" stroke="${t.strong}" stroke-width="2"/>` +
+      `${text(ask.question, "text", qSize, qX + 28, y + 38, t.fg).svg}</g>`,
+  );
 
   y += 58 + 62;
+  // Thinking: three dots bounce where the answer will start, then give way.
+  const think = 1.2;
+  const start = 2.7;
+  parts.push(
+    `<g opacity="0"><animate attributeName="opacity" dur="${P}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(think)};${kt(start)}" values="0;1;0"/>` +
+      [0, 1, 2].map((i) => `<circle class="dot" cx="${pad + 10 + i * 22}" cy="${y - 9}" r="6" fill="${t.accent}" style="animation-delay:${i * 0.16}s"/>`).join("") +
+      `</g>`,
+  );
+
+  // The answer, streamed a word at a time.
+  let n = 0;
+  const STEP = 0.058;
   lines.forEach((ln, i) => {
-    parts.push(text(ln, "text", answerSize, pad, y + i * lineH, t.fg).svg);
+    const ly = y + i * lineH;
+    const list = ln.split(" ");
+    list.forEach((word, k) => {
+      const x = pad + (k === 0 ? 0 : measure(`${list.slice(0, k).join(" ")} `, "text", answerSize));
+      parts.push(`<g>${appear(start + n * STEP)}${text(word, "text", answerSize, x, ly, t.fg).svg}</g>`);
+      n += 1;
+    });
   });
+  const done = start + n * STEP;
   const last = lines.at(-1);
   const caretX = pad + measure(last, "text", answerSize) + 6;
   const caretY = y + (lines.length - 1) * lineH;
-  parts.push(`<rect class="caret" x="${r1(caretX)}" y="${caretY - 22}" width="3" height="27" fill="${t.accent}"/>`);
+  parts.push(`<g>${appear(done)}<rect class="caret" x="${r1(caretX)}" y="${caretY - 22}" width="3" height="27" fill="${t.accent}"/></g>`);
 
   y = caretY + 56;
-  parts.push(label("Sources", 15, pad, y, t.muted).svg);
+  parts.push(`<g>${appear(done + 0.3)}${label("Sources", 15, pad, y, t.muted).svg}</g>`);
   const sourceSize = 19;
   ask.sources.forEach((src, i) => {
     const sy = y + 32 + i * 31;
-    parts.push(text(String(i + 1), "mono", 16, pad, sy, t.accentInk).svg);
-    parts.push(text(src, "text", sourceSize, pad + 28, sy, t.muted).svg);
+    parts.push(
+      `<g>${appear(done + 0.55 + i * 0.22, { dx: -26 })}${text(String(i + 1), "mono", 16, pad, sy, t.accentInk).svg}${text(src, "text", sourceSize, pad + 28, sy, t.muted).svg}</g>`,
+    );
   });
 
   const H = y + 32 + ask.sources.length * 31 + 34;
-  parts.push(text("Ask your own question", "display", 22, W - pad - 30, H - 42, t.accentInk, { anchor: "end" }).svg);
-  parts.push(`<g transform="translate(${r1(W - pad - 22)} ${H - 62}) scale(0.75)">${ICONS.arrow(t.accentInk)}</g>`);
+  parts.push(
+    `<g>${appear(done + 1.4, { dy: 10 })}${text("Ask your own question", "display", 22, W - pad - 30, H - 42, t.accentInk, { anchor: "end" }).svg}` +
+      `<g transform="translate(${r1(W - pad - 22)} ${H - 62}) scale(0.75)">${ICONS.arrow(t.accentInk)}</g></g>`,
+  );
+  parts.push(beam(t, W, H, 22, { dur: 10, begin: 0.8, len: 90 }));
 
   const css = `
     .ping{transform-box:fill-box;transform-origin:center;animation:ping 2.4s ease-out infinite}
     @keyframes ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.4);opacity:0}}
     .caret{animation:blink 1.1s steps(1) infinite}
     @keyframes blink{0%,60%{opacity:1}61%,100%{opacity:0}}
-    ${REDUCED(".ping,.caret")}
+    .dot{animation:bounce .9s ease-in-out infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0);opacity:.45}40%{transform:translateY(-9px);opacity:1}}
+    ${REDUCED(".ping,.caret,.dot")}
   `;
   return doc({
     width: W,
@@ -273,10 +366,13 @@ const CW = 560;
 const CH = 384;
 
 /**
- * Stations on a track. A packet runs along it and lights each station as it
- * arrives; `holdAt` makes it wait at one station (the human approval step).
+ * Stations on a track. A glowing packet runs along it and lights each station
+ * (with a ripple) as it arrives; dots flow along the line between runs.
+ * `holdAt` makes the packet wait at one station, where a check mark stamps
+ * itself (the human approval step); `fork` splits the packet into two lanes
+ * between the first two stations (BM25 and vectors searching side by side).
  */
-function track(t, stations, { holdAt = -1 } = {}) {
+function track(t, stations, { holdAt = -1, fork = false } = {}) {
   const x0 = 46;
   const x1 = CW - 46;
   const y = 252;
@@ -288,8 +384,6 @@ function track(t, stations, { holdAt = -1 } = {}) {
   const arrival = stations.map((_, i) => (i / last) * travel + (holdAt >= 0 && i > holdAt ? hold : 0));
   const kt = (v) => String(Math.round(Math.min(Math.max(v, 0), 1) * 1000) / 1000);
 
-  // Packet timeline: arrive at each station in turn, wait if this is the
-  // holding station, then rest at the end until the loop restarts.
   const times = [];
   const xs = [];
   stations.forEach((_, i) => {
@@ -302,43 +396,93 @@ function track(t, stations, { holdAt = -1 } = {}) {
   });
   times.push(1);
   xs.push(x1);
+  const motion = `<animateTransform attributeName="transform" type="translate" dur="${dur}s" repeatCount="indefinite" keyTimes="${times.map(kt).join(";")}" values="${xs.map((v) => `${r1(v)} ${y}`).join(";")}"/>`;
 
-  const parts = [`<path d="M${x0} ${y}H${x1}" stroke="${t.strong}" stroke-width="2"/>`];
+  const parts = [
+    `<defs><linearGradient id="trail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}" stop-opacity="0"/><stop offset="1" stop-color="${t.accent}" stop-opacity="0.9"/></linearGradient></defs>`,
+    `<path d="M${x0} ${y}H${x1}" stroke="${t.strong}" stroke-width="2"/>`,
+    `<path class="flow" d="M${x0} ${y}H${x1}" stroke="${t.accent}" stroke-width="2" stroke-dasharray="2 12" stroke-linecap="round" opacity="0.55"/>`,
+  ];
+
+  if (fork) {
+    // Two packets search side by side, then meet again at the next station.
+    const a = x0;
+    const b = x0 + step;
+    const lane = (dy) => `M${a} ${y}C${a + step * 0.3} ${y + dy} ${b - step * 0.3} ${y + dy} ${b} ${y}`;
+    for (const dy of [-30, 30]) {
+      parts.push(`<path d="${lane(dy)}" fill="none" stroke="${t.strong}" stroke-width="1.6" stroke-dasharray="3 5"/>`);
+      parts.push(
+        `<circle r="4.5" fill="${t.accent}" opacity="0"><animate attributeName="opacity" dur="${dur}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(arrival[0] + 0.005)};${kt(arrival[1])}" values="0;1;0"/>` +
+          `<animateMotion dur="${dur}s" repeatCount="indefinite" calcMode="linear" keyTimes="0;${kt(arrival[0] + 0.005)};${kt(arrival[1])};1" keyPoints="0;0;1;1" path="${lane(dy)}"/></circle>`,
+      );
+    }
+    parts.push(label("bm25", 12, x0 + step * 0.45, y - 44, t.muted, { anchor: "middle" }).svg);
+    parts.push(label("vectors", 12, x0 + step * 0.4, y + 46, t.muted, { anchor: "middle" }).svg);
+  }
+
   stations.forEach((name, i) => {
     const sx = x0 + i * step;
     const on = Math.max(arrival[i], 0.001);
     const off = Math.min(on + (i === holdAt ? hold + 0.06 : 0.12), 0.999);
     parts.push(
+      `<circle cx="${r1(sx)}" cy="${y}" r="9" fill="none" stroke="${t.accent}" stroke-width="2" opacity="0">` +
+        `<animate attributeName="r" dur="${dur}s" repeatCount="indefinite" keyTimes="0;${kt(on)};${kt(on + 0.16)};1" values="9;9;24;24"/>` +
+        `<animate attributeName="opacity" dur="${dur}s" repeatCount="indefinite" keyTimes="0;${kt(on)};${kt(on + 0.004)};${kt(on + 0.16)};1" values="0;0;0.9;0;0"/></circle>`,
       `<circle cx="${r1(sx)}" cy="${y}" r="9" fill="${t.bg}" stroke="${t.fg}" stroke-width="2.5">` +
         `<animate attributeName="fill" dur="${dur}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${kt(on)};${kt(off)}" values="${t.bg};${t.accent};${t.bg}"/></circle>`,
     );
     const end = i === 0 || i === last;
     const anchor = i === 0 ? "start" : i === last ? "end" : "middle";
     const lx = i === 0 ? sx - 9 : i === last ? sx + 9 : sx;
-    parts.push(label(name, 14, lx, i % 2 === 1 ? y - 26 : y + 40, end ? t.fg : t.muted, { anchor }).svg);
+    const above = fork ? i === 0 || i === last : i % 2 === 1;
+    if (!(fork && i === 1)) parts.push(label(name, 14, lx, above ? y - 26 : y + 40, end ? t.fg : t.muted, { anchor }).svg);
+    if (fork && i === 1) parts.push(label("rrf merge", 14, lx, y + 40, t.muted, { anchor }).svg);
+    if (i === holdAt) {
+      // The approval: a check mark draws itself while the packet waits.
+      const c = `M${sx - 9} ${y - 34}l7 7l13 -15`;
+      parts.push(
+        `<path d="${c}" fill="none" stroke="${t.accent}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="100" stroke-dasharray="100 100" opacity="0">` +
+          `<animate attributeName="stroke-dashoffset" dur="${dur}s" repeatCount="indefinite" keyTimes="0;${kt(on)};${kt(on + 0.08)};1" values="100;100;0;0"/>` +
+          `<animate attributeName="opacity" dur="${dur}s" repeatCount="indefinite" keyTimes="0;${kt(on)};${kt(on + 0.01)};${kt(off + 0.1)};${kt(off + 0.16)};1" values="0;0;1;1;0;0"/></path>`,
+      );
+    }
   });
+
+  // The packet, with a fading trail behind it.
   parts.push(
-    `<circle r="6" fill="${t.accent}"><animateTransform attributeName="transform" type="translate" dur="${dur}s" repeatCount="indefinite" keyTimes="${times.map(kt).join(";")}" values="${xs.map((v) => `${r1(v)} ${y}`).join(";")}"/></circle>`,
+    `<g>${motion}<rect x="-46" y="-3" width="44" height="6" rx="3" fill="url(#trail)"/>` +
+      `<circle r="11" fill="${t.accent}" opacity="0.22"/><circle r="6" fill="${t.accent}"/><circle r="2.4" fill="#fff6dc"/></g>`,
   );
   return parts.join("");
 }
 
 function featureTiles(t) {
-  // RFE took the model from 12 engineered features to 8: four tiles drop out.
+  // RFE took the model from 12 engineered features to 8: four tiles fall out.
   const n = 12;
   const size = 30;
   const gap = 10;
   const x0 = (CW - (n * size + (n - 1) * gap)) / 2;
   const y = 222;
   const drop = [3, 7, 9, 11];
+  const D = 6;
   const parts = [];
   for (let i = 0; i < n; i += 1) {
     const k = drop.indexOf(i);
-    const anim =
-      k < 0
-        ? ""
-        : `<animate attributeName="opacity" dur="6s" repeatCount="indefinite" keyTimes="0;${0.18 + k * 0.1};${0.24 + k * 0.1};0.86;0.94;1" values="1;1;0.16;0.16;1;1"/>`;
-    parts.push(`<rect x="${r1(x0 + i * (size + gap))}" y="${y}" width="${size}" height="${size}" rx="6" fill="${k < 0 ? t.fg : t.accent}">${anim}</rect>`);
+    const x = r1(x0 + i * (size + gap));
+    if (k < 0) {
+      parts.push(`<rect class="keep" x="${x}" y="${y}" width="${size}" height="${size}" rx="6" fill="${t.fg}" style="animation-delay:${r1(i * 0.12)}s"/>`);
+      continue;
+    }
+    const t0 = 0.16 + k * 0.1;
+    const t1 = t0 + 0.12;
+    const cx = r1(x0 + i * (size + gap) + size / 2);
+    const cy = y + size / 2;
+    parts.push(
+      `<g><animateTransform attributeName="transform" type="translate" dur="${D}s" repeatCount="indefinite" keyTimes="0;${t0};${t1};0.88;0.9;1" values="0 0;0 0;${k % 2 ? 8 : -8} 24;${k % 2 ? 8 : -8} 24;0 0;0 0"/>` +
+        `<animate attributeName="opacity" dur="${D}s" repeatCount="indefinite" keyTimes="0;${t0};${r1((t0 + t1) / 2 * 1000) / 1000};0.88;0.92;1" values="1;1;0;0;1;1"/>` +
+        `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="6" fill="${t.accent}">` +
+        `<animateTransform attributeName="transform" type="rotate" dur="${D}s" repeatCount="indefinite" keyTimes="0;${t0};${t1};1" values="0 ${cx} ${cy};0 ${cx} ${cy};${k % 2 ? 38 : -38} ${cx} ${cy};${k % 2 ? 38 : -38} ${cx} ${cy}"/></rect></g>`,
+    );
   }
   parts.push(label("12 engineered features", 14, x0, y + size + 32, t.muted).svg);
   parts.push(label("8 after RFE", 14, CW - x0, y + size + 32, t.accentInk, { anchor: "end" }).svg);
@@ -347,6 +491,7 @@ function featureTiles(t) {
 
 function hourRing(t) {
   // A 24-hour dial with the finding marked: tipping peaks from 10pm to 2am.
+  // A taxi circles the dial; the peak arc flares as it drives through it.
   const cx = 96;
   const cy = 262;
   const r = 46;
@@ -360,9 +505,16 @@ function hourRing(t) {
   }
   const [sx, sy] = pt(22, r);
   const [ex, ey] = pt(26, r);
-  parts.push(`<path d="M${r1(sx)} ${r1(sy)}A${r} ${r} 0 0 1 ${r1(ex)} ${r1(ey)}" fill="none" stroke="${t.accent}" stroke-width="7" stroke-linecap="round"/>`);
+  const arc = `M${r1(sx)} ${r1(sy)}A${r} ${r} 0 0 1 ${r1(ex)} ${r1(ey)}`;
+  parts.push(`<path class="flare" d="${arc}" fill="none" stroke="${t.accent}" stroke-width="16" stroke-linecap="round" opacity="0.18"/>`);
+  parts.push(`<path d="${arc}" fill="none" stroke="${t.accent}" stroke-width="7" stroke-linecap="round"/>`);
+  // The taxi and its tail, on a group that turns once every 8 s from midnight.
   parts.push(
-    `<path class="hand" d="M${cx} ${cy}L${cx} ${cy - r + 14}" stroke="${t.fg}" stroke-width="3" stroke-linecap="round"/>`,
+    `<g class="orbit">` +
+      `<path d="M${cx} ${cy - r}A${r} ${r} 0 0 0 ${r1(cx - r * Math.sin(0.7))} ${r1(cy - r * Math.cos(0.7))}" fill="none" stroke="#ffd23f" stroke-width="4" stroke-linecap="round" opacity="0.45"/>` +
+      `<rect x="${cx - 8}" y="${cy - r - 5.5}" width="16" height="11" rx="3.5" fill="#ffd23f"/>` +
+      `<rect x="${cx - 3.5}" y="${cy - r - 8.5}" width="7" height="3.5" rx="1.5" fill="#ffd23f"/>` +
+      `</g>`,
     `<circle cx="${cx}" cy="${cy}" r="4.5" fill="${t.fg}"/>`,
   );
   const tx = cx + r + 40;
@@ -376,7 +528,7 @@ function hourRing(t) {
 
 function workCard(t, fig) {
   const pad = 36;
-  const parts = [card(t, CW, CH, 20)];
+  const parts = [card(t, CW, CH, 20), sheen("ws", CW, CH, 20, { dur: 9, begin: 1.5 + fig.n * 0.7, opacity: 0.05 })];
   const fl = label(`fig. ${fig.n}`, 14, pad, 50, t.accentInk);
   parts.push(fl.svg);
   parts.push(label(` · ${fig.kind}`, 14, pad + fl.width, 50, t.muted).svg);
@@ -403,17 +555,24 @@ function workCard(t, fig) {
     mx += packed ? widths[i] + gap : colW;
   });
 
+  parts.push(beam(t, CW, CH, 20, { dur: 6 + fig.n * 0.8, begin: 0.3 + fig.n * 0.45, len: 120 }));
   const css = `
-    .hand{transform-box:view-box;transform-origin:96px 262px;animation:spin 8s linear infinite}
+    .flow{animation:flow 1.1s linear infinite}
+    @keyframes flow{to{stroke-dashoffset:-14}}
+    .orbit{transform-box:view-box;transform-origin:96px 262px;animation:spin 8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
-    ${REDUCED(".hand")}
+    .flare{animation:flare 8s linear infinite}
+    @keyframes flare{0%,8.4%{opacity:.75;stroke-width:22px}10%,90%{opacity:.18;stroke-width:16px}91.6%,100%{opacity:.75;stroke-width:22px}}
+    .keep{animation:glow 6s ease-in-out infinite}
+    @keyframes glow{0%,20%,100%{opacity:1}60%{opacity:.82}}
+    ${REDUCED(".flow,.orbit,.flare,.keep")}
   `;
   return doc({
     width: CW,
     height: CH,
     title: `fig. ${fig.n}: ${fig.title}`,
     desc: `${fig.summary} ${fig.metrics.map(([v, k]) => `${v} ${k.replace("²", " squared")}`).join(", ")}.`,
-    css: fig.motif === hourRing ? css : "",
+    css,
     body: parts.join("\n"),
   });
 }
@@ -437,7 +596,7 @@ async function figures() {
       kind: "flagship · live",
       title: "Portfolio Assistant",
       summary: "Answers recruiter questions about my work and traces every claim to a source document.",
-      motif: (t) => track(t, ["question", "bm25 + vectors", "rrf + rerank", "answer"]),
+      motif: (t) => track(t, ["question", "rrf merge", "llm rerank", "answer"], { fork: true }),
       metrics: [
         [String(e.cases), "golden eval cases"],
         [e.recall10.toFixed(2), "recall@10"],
@@ -490,7 +649,7 @@ async function figures() {
 const figs = await figures();
 for (const t of Object.values(THEMES)) {
   save(`header-${t.name}.svg`, header(t));
-  for (const b of BUTTONS) save(`btn-${b.file}-${t.name}.svg`, button(t, b));
+  BUTTONS.forEach((b, index) => save(`btn-${b.file}-${t.name}.svg`, button(t, { ...b, index })));
   save(`ask-${t.name}.svg`, askCard(t));
   save(`about-${t.name}.svg`, aboutCard(t));
   save(`experience-${t.name}.svg`, experienceCard(t));
