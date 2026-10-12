@@ -1,0 +1,47 @@
+name: profile
+
+# Redraws the figures and the daily card from live data, then commits them.
+on:
+  schedule:
+    - cron: "23 5 * * *" # every morning, about 06:23 in London
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/profile.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile
+  cancel-in-progress: false
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: redraw the figures
+        run: node scripts/build.mjs
+
+      - name: refresh the daily card
+        run: node scripts/live.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: commit what changed
+        run: |
+          git add assets README.md scripts/cache
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Redraw the daily card"
+          git pull -q --rebase origin main
+          git push -q
