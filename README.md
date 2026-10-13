@@ -23,7 +23,7 @@
 
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
-  <img alt="Updated 13 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 13 Oct, til: Close the day's reminder as soon as a note is pushed; 13 Oct, til: Count only real notes when deciding whether to remind; 13 Oct, til: Keep the reminder from failing when nothing is open; 13 Oct, til: Fix the reminder workflow's YAML. Assistant deployed 12 Oct, assistant CI passing, portfolio online." src="./assets/live-dark.svg?v=202610130829" width="100%">
+  <img alt="Updated 13 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 13 Oct, portfolio-assistant: Trigger a contributor recount after the history rewrite; 13 Oct, til: TIL: GitHub only counts a commit on my contribution graph if it'…; 13 Oct, til: Close the day's reminder as soon as a note is pushed; 13 Oct, til: Count only real notes when deciding whether to remind. Assistant deployed 13 Oct, assistant CI passing, portfolio online. Today I learned (13 Oct 2026): GitHub only counts a commit on my contribution graph if it's authored with an email linked to my account. My June Notes App commits used my Mac's local address, so they never counted until the author email was fixed." src="./assets/live-dark.svg?v=202610131247" width="100%">
 </a>
 <!-- LIVE:END -->
 
@@ -35,7 +35,7 @@
 
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
-  <img alt="My contribution graph for the last year: 71 contributions on 8 days. A snake takes a random route through every day, new each morning, eats the 8 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610130829" width="100%">
+  <img alt="My contribution graph for the last year: 83 contributions on 9 days. A snake takes a random route through every day, new each morning, eats the 9 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610131247" width="100%">
 </a>
 <!-- CONTRIB:END -->
 
