@@ -10,7 +10,7 @@ export const links = {
   portfolio: "https://shubham-kumar-singh.vercel.app",
   assistant: "https://portfolio-assistant-iota.vercel.app",
   assistantRepo: "https://github.com/Shubham-afk-del/portfolio-assistant",
-  linkedin: "https://www.linkedin.com/in/shubham-singh-00236a191",
+  linkedin: "https://www.linkedin.com/in/shubham-kumar-singh-00236a191",
   email: "mailto:shubhamsingh90390@gmail.com",
   cv: "https://shubham-kumar-singh.vercel.app/Shubham-Kumar-Singh-CV.pdf",
 };

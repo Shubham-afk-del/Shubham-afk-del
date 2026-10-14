@@ -8,7 +8,7 @@
 <p align="center">
   <a href="https://shubham-kumar-singh.vercel.app"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-portfolio-dark.svg"><img alt="Portfolio" src="./assets/btn-portfolio-light.svg" height="44"></picture></a>
   <a href="https://portfolio-assistant-iota.vercel.app"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-assistant-dark.svg"><img alt="Ask my AI assistant" src="./assets/btn-assistant-light.svg" height="44"></picture></a>
-  <a href="https://www.linkedin.com/in/shubham-singh-00236a191"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-linkedin-dark.svg"><img alt="LinkedIn" src="./assets/btn-linkedin-light.svg" height="44"></picture></a>
+  <a href="https://www.linkedin.com/in/shubham-kumar-singh-00236a191"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-linkedin-dark.svg"><img alt="LinkedIn" src="./assets/btn-linkedin-light.svg" height="44"></picture></a>
   <a href="mailto:shubhamsingh90390@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-email-dark.svg"><img alt="Email" src="./assets/btn-email-light.svg" height="44"></picture></a>
   <a href="https://shubham-kumar-singh.vercel.app/Shubham-Kumar-Singh-CV.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/btn-cv-dark.svg"><img alt="CV (PDF)" src="./assets/btn-cv-light.svg" height="44"></picture></a>
 </p>
