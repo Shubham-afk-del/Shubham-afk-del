@@ -23,7 +23,7 @@
 
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
-  <img alt="Updated 13 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 13 Oct, portfolio-assistant: Trigger a contributor recount after the history rewrite; 13 Oct, til: TIL: GitHub only counts a commit on my contribution graph if it'…; 13 Oct, til: Close the day's reminder as soon as a note is pushed; 13 Oct, til: Count only real notes when deciding whether to remind. Assistant deployed 13 Oct, assistant CI passing, portfolio online. Today I learned (13 Oct 2026): GitHub only counts a commit on my contribution graph if it's authored with an email linked to my account. My June Notes App commits used my Mac's local address, so they never counted until the author email was fixed." src="./assets/live-dark.svg?v=202610131247" width="100%">
+  <img alt="Updated 14 Oct 2026. The assistant, measured 11 Oct 2026: recall at 10 of 0.98 with hybrid search and reranking, 74 of 77 answer checks passed, 10 of 10 prompt injections resisted, first word after 2.4 seconds at the median. Latest commits: 14 Oct, til: Ask Dependabot for GitHub Actions updates; 14 Oct, til: Add a report of what changed in my learning folders; 14 Oct, til: Rewrite the first notes from my course work; 14 Oct, til: Close the day's reminder when a note arrives by issue. Assistant deployed 13 Oct, assistant CI passing, portfolio online. Today I learned (14 Oct 2026): In `AzureOpenAI(...)`, `api_version` takes a date like `2024-08-01-preview`. The model's name goes in `deployment_name` instead." src="./assets/live-dark.svg?v=202610141019" width="100%">
 </a>
 <!-- LIVE:END -->
 
@@ -35,7 +35,7 @@
 
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
-  <img alt="My contribution graph for the last year: 83 contributions on 9 days. A snake takes a random route through every day, new each morning, eats the 9 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610131247" width="100%">
+  <img alt="My contribution graph for the last year: 90 contributions on 10 days. A snake takes a random route through every day, new each morning, eats the 10 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-dark.svg?v=202610141019" width="100%">
 </a>
 <!-- CONTRIB:END -->
 
