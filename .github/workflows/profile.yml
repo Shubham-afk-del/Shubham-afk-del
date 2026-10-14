@@ -47,6 +47,10 @@ jobs:
             echo "Nothing changed."
             exit 0
           fi
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "Redraw the terminal and the contribution graph"
+          # Set the identity for the repo, not just this commit: the rebase below
+          # rewrites the commit when main moved during the run, and needs it too.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Redraw the terminal and the contribution graph"
           git pull -q --rebase origin main
           git push -q
