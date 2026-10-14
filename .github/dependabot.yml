@@ -1,0 +1,10 @@
+# Opens a pull request when a GitHub Action used here has a new version.
+# I review each one (what changed, does the workflow still pass) before merging.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
