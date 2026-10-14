@@ -14,6 +14,9 @@ const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 const NAMES = {
   "LR_Delivery_Time_Prediction_-Shubham-Kumar-Singh-": "delivery-time",
   EDA_Optimising_NYC_Taxis_Shubham_Kumar_Singh: "nyc-taxis",
+  Fraudulent_Claim_Detection: "fraud-claims",
+  Predicting_Employee_Retention: "employee-retention",
+  SQL_Farmers_Insurance_Analysis: "farmers-sql",
   Notes_App_AE2: "notes-app",
 };
 
@@ -133,7 +136,7 @@ const info = [
   ["Study", "MSc AI & CS, Northeastern University London"],
   ["Thesis", "Agentic AI and large language models"],
   ["Before", "Capgemini, Tech Mahindra · 3+ yrs enterprise IT"],
-  ["Stack", "Python, TypeScript, RAG, LLMs, scikit-learn"],
+  ["Stack", "Python, SQL, TypeScript, RAG, LLMs, scikit-learn"],
   ["Evals", `recall@10 ${e.recall10.toFixed(2)} · ${e.passed}/${e.cases} checks · ${e.injections} injections`],
   ["Commit", latest ? fit(`${day(latest.date)} · ${latest.repo} · ${latest.subject}`, "mono", 20, VALUE_W) : "unavailable right now"],
   ["Live", live],

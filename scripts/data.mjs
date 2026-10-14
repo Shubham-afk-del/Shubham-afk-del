@@ -105,3 +105,15 @@ export const certifications = [
   { name: "Foundations of Cybersecurity", issuer: "Google", date: "Apr 2025" },
   { name: "Python Bootcamp", issuer: "upGrad", date: "Mar 2025" },
 ];
+
+/**
+ * PMFBY premiums per year in crore rupees, from the per-year query in my
+ * SQL_Farmers_Insurance_Analysis repo (summary_queries.sql), recomputed from
+ * the course's data.csv on 15 Oct 2026. The farmers' share fell every year.
+ */
+export const pmfby = [
+  { year: 2018, gross: 7263, farmers: 1390, share: 19.1 },
+  { year: 2019, gross: 9214, farmers: 1279, share: 13.9 },
+  { year: 2020, gross: 13411, farmers: 1560, share: 11.6 },
+  { year: 2021, gross: 13119, farmers: 1395, share: 10.6 },
+];
