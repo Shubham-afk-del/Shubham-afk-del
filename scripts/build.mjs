@@ -224,13 +224,22 @@ const ICONS = {
 function button(t, { label: str, icon, primary, index = 0 }) {
   const size = 27;
   const h = 88;
+  const day = t.name === "light";
   const textW = measure(str, "display", size, -0.2);
   const w = Math.ceil(32 + 32 + 16 + textW + 36);
-  const bg = primary ? t.accent : t.bg;
   const fg = primary ? t.accentFg : t.fg;
+  // Primary: a vermilion pill that warms toward orange. Others: a raised pill,
+  // white into cream by day, ink into indigo by night.
+  const stops = primary
+    ? [t.accent, day ? "#ff7a2f" : "#ff8a3d"]
+    : day
+      ? ["#ffffff", "#fff0e3"]
+      : ["#17171d", "#0d0d11"];
   const parts = [
-    `<rect x="1.5" y="1.5" width="${w - 3}" height="${h - 3}" rx="${(h - 3) / 2}" fill="${bg}" stroke="${primary ? t.accent : t.strong}" stroke-width="3"/>`,
-    sheen("bs", w, h, (h - 2) / 2, { dur: 5.5, begin: 1 + index * 0.16, opacity: primary ? 0.45 : 0.16 }),
+    `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${stops[0]}"/><stop offset="1" stop-color="${stops[1]}"/></linearGradient></defs>`,
+    `<rect x="1.5" y="1.5" width="${w - 3}" height="${h - 3}" rx="${(h - 3) / 2}" fill="url(#bg)" stroke="${primary ? t.accent : t.strong}" stroke-width="3"/>`,
+    `<path d="M${h / 2} 4.5H${w - h / 2}" stroke="#fff" stroke-opacity="${primary ? 0.45 : day ? 1 : 0.12}" stroke-width="2" stroke-linecap="round"/>`,
+    sheen("bs", w, h, (h - 2) / 2, { dur: 5.5, begin: 1 + index * 0.16, opacity: primary ? 0.45 : day ? 0.7 : 0.16, color: primary || !day ? "#fff" : t.sheen }),
     `<g transform="translate(32 ${h / 2 - 16})">${ICONS[icon](fg, "ping")}</g>`,
     text(str, "display", size, 32 + 32 + 16, h / 2 + 9.5, fg, { tracking: -0.2 }).svg,
   ];
@@ -528,7 +537,7 @@ function hourRing(t) {
 
 function workCard(t, fig) {
   const pad = 36;
-  const parts = [card(t, CW, CH, 20), sheen("ws", CW, CH, 20, { dur: 9, begin: 1.5 + fig.n * 0.7, opacity: 0.05 })];
+  const parts = [card(t, CW, CH, 20), sheen("ws", CW, CH, 20, { dur: 9, begin: 1.5 + fig.n * 0.7, opacity: t.name === "light" ? 0.45 : 0.05, color: t.sheen })];
   const fl = label(`fig. ${fig.n}`, 14, pad, 50, t.accentInk);
   parts.push(fl.svg);
   parts.push(label(` · ${fig.kind}`, 14, pad + fl.width, 50, t.muted).svg);

@@ -187,7 +187,7 @@ export function skillsCard(t) {
     y += h + 30;
   }
   const H = y + 14;
-  parts.push(sheen("ss", W, H, 22, { dur: 6.5, begin: 2.2, opacity: 0.09 }), beam(t, W, H, 22, { dur: 10, begin: 1.4, len: 90 }));
+  parts.push(sheen("ss", W, H, 22, { dur: 6.5, begin: 2.2, opacity: t.name === "light" ? 0.45 : 0.09, color: t.sheen }), beam(t, W, H, 22, { dur: 10, begin: 1.4, len: 90 }));
   const css = `
     .chip{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,.9,.3,1.3) both}
     @keyframes pop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
@@ -255,6 +255,6 @@ export function colophonCard(t) {
     y += 30;
   });
   const H = y + 14;
-  parts.push(sheen("cs", W, H, 18, { dur: 8, begin: 2, opacity: 0.08 }), beam(t, W, H, 18, { dur: 9, begin: 1.2, len: 120 }));
+  parts.push(sheen("cs", W, H, 18, { dur: 8, begin: 2, opacity: t.name === "light" ? 0.45 : 0.08, color: t.sheen }), beam(t, W, H, 18, { dur: 9, begin: 1.2, len: 120 }));
   return doc({ width: W, height: H, title: "How this page is made", desc: lines.join(" "), body: [card(t, W, H, 18), ...parts].join("\n") });
 }

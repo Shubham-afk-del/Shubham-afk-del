@@ -3,7 +3,9 @@
 <desc id="desc">CV</desc>
 
 <defs><path id="d67" d="M415 -9Q327 -9 256 17Q185 43 134 92Q84 140 58 210Q31 279 31 365Q31 451 58 520Q85 589 135 638Q185 686 256 712Q327 738 415 738Q513 738 589 706Q665 674 712 616Q759 559 770 481L629 481Q619 523 590 555Q560 587 516 604Q471 622 415 622Q341 622 287 592Q233 563 204 506Q174 448 174 365Q174 302 191 254Q208 206 240 173Q271 140 315 124Q359 107 415 107Q471 107 516 124Q561 142 591 174Q621 207 629 250L770 250Q760 172 712 114Q664 55 588 23Q511 -9 415 -9Z"/><path id="d86" d="M305 0L12 729L166 729L347 246L393 112L400 112L446 245L628 729L782 729L489 0Z"/></defs>
-<rect x="1.5" y="1.5" width="156" height="85" rx="42.5" fill="#0a0a0b" stroke="#323236" stroke-width="3"/>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17171d"/><stop offset="1" stop-color="#0d0d11"/></linearGradient></defs>
+<rect x="1.5" y="1.5" width="156" height="85" rx="42.5" fill="url(#bg)" stroke="#34343c" stroke-width="3"/>
+<path d="M44 4.5H115" stroke="#fff" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
 <clipPath id="bs"><rect x="1" y="1" width="157" height="86" rx="43"/></clipPath><linearGradient id="bsg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><g clip-path="url(#bs)"><g transform="skewX(-20)"><rect x="-420" y="-60" width="320" height="208" fill="url(#bsg)" opacity="0"><set attributeName="opacity" to="1" begin="1.6400000000000001s"/><animate attributeName="x" values="-420;579;579" keyTimes="0;0.42;1" dur="5.5s" begin="1.6400000000000001s" repeatCount="indefinite"/></rect></g></g>
 <g transform="translate(32 28)"><path d="M8 4H19L25 10V28H8Z" fill="none" stroke="#ededec" stroke-width="3" stroke-linejoin="round"/><path d="M19 4V10H25M12 16H21M12 21H21" fill="none" stroke="#ededec" stroke-width="2.6" stroke-linecap="round"/></g>
 <g fill="#ededec" transform="translate(80 53.5) scale(0.027 -0.027)"><use href="#d67"/><use href="#d86" x="769"/></g>
