@@ -46,8 +46,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610151004">
-    <img alt="Updated 15 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Oct, til: File each note through a checked pull request (#8); 15 Oct, portfolio-assistant: Answer evals on the corrected prompt, measured during an overload; 15 Oct, portfolio-assistant: A third model when the fallback's quota runs out; 15 Oct, portfolio-assistant: Identity gets its own rule; skill questions name the level. Assistant deployed 15 Oct, assistant CI passing, portfolio online. Today I learned (14 Oct 2026): In `AzureOpenAI(...)`, `api_version` takes a date like `2024-08-01-preview`. The model's name goes in `deployment_name` instead." src="./assets/live-light.svg?v=202610151004" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610151122">
+    <img alt="Updated 15 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Oct, nyc-taxis: Add the MIT license and the author footer (#1); 15 Oct, delivery-time: Add the MIT license and the author footer (#1); 15 Oct, farmers-sql: Add the MIT license (#1); 15 Oct, employee-retention: Add the MIT license (#1). Assistant deployed 15 Oct, assistant CI passing, portfolio online. Today I learned (14 Oct 2026): In `AzureOpenAI(...)`, `api_version` takes a date like `2024-08-01-preview`. The model's name goes in `deployment_name` instead." src="./assets/live-light.svg?v=202610151122" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -76,8 +76,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610151004">
-    <img alt="My contribution graph for the last year: 141 contributions on 11 days. A snake takes a random route through every day, new each morning, eats the 11 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610151004" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610151122">
+    <img alt="My contribution graph for the last year: 133 contributions on 11 days. A snake takes a random route through every day, new each morning, eats the 11 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610151122" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
