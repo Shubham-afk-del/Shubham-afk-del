@@ -135,7 +135,7 @@ const info = [
   ["Name", "Shubham Kumar Singh"],
   ["Role", "AI & ML Engineer"],
   ["Study", "MSc AI & CS, Northeastern University London"],
-  ["Thesis", "Agentic AI and large language models"],
+  ["Thesis", "Cumulative guardrails for LLM agents"],
   ["Before", "Capgemini, Tech Mahindra · 3+ yrs enterprise IT"],
   ["Stack", "Python, SQL, TypeScript, RAG, LLMs, scikit-learn"],
   ["Evals", `recall@10 ${e.recall10.toFixed(2)} · ${e.passed}/${e.cases} checks · ${e.injections} injections`],

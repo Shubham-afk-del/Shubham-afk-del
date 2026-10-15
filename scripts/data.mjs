@@ -63,7 +63,7 @@ export const shortDate = (iso) =>
 /** The about card: his own words from the portfolio. */
 export const about = [
   "For three years I was the person on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into concrete directory changes, and I approved every one. That tool is where AI stopped being a subject and became the work.",
-  "Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London, with a dissertation on agentic AI and large language models.",
+  "Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London. My dissertation tests guardrails for LLM agents: if a rule blocks one large refund, does the agent split it into many small ones that each pass?",
   "I'm open to AI and ML internships, including summer 2027 or a placement that counts toward the MSc, and to full-time roles from February 2027.",
 ];
 
@@ -92,7 +92,7 @@ export const skills = {
 };
 
 export const education = [
-  { title: "MSc Artificial Intelligence & Computer Science", school: "Northeastern University London · dissertation on agentic AI and LLMs", when: "Jan 2026 to Jan 2027", result: "In progress" },
+  { title: "MSc Artificial Intelligence & Computer Science", school: "Northeastern University London · dissertation on guardrails for LLM agents", when: "Jan 2026 to Jan 2027", result: "In progress" },
   { title: "Postgraduate Diploma, Computer Science", school: "IIIT Bangalore", when: "Jan 2025 to Jan 2026", result: "96.25% · CGPA 3.85 / 4.0", highlight: true },
   { title: "Bachelor of Computer Applications", school: "Chandigarh University", when: "Sep 2021 to Sep 2024", result: "Completed alongside full-time work" },
   { title: "Diploma, Computer Science & Engineering", school: "Kalinga University, Raipur", when: "2018 to 2021", result: "81% · first division" },

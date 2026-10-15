@@ -16,7 +16,7 @@
 <a href="https://shubham-kumar-singh.vercel.app/#about">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/about-dark.svg">
-    <img alt="About. For three years I was the person on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into concrete directory changes, and I approved every one. That tool is where AI stopped being a subject and became the work. Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London, with a dissertation on agentic AI and large language models. I'm open to AI and ML internships, including summer 2027 or a placement that counts toward the MSc, and to full-time roles from February 2027." src="./assets/about-light.svg" width="100%">
+    <img alt="About. For three years I was the person on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into concrete directory changes, and I approved every one. That tool is where AI stopped being a subject and became the work. Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London. My dissertation tests guardrails for LLM agents: if a rule blocks one large refund, does the agent split it into many small ones that each pass? I'm open to AI and ML internships, including summer 2027 or a placement that counts toward the MSc, and to full-time roles from February 2027." src="./assets/about-light.svg" width="100%">
   </picture>
 </a>
 
@@ -46,8 +46,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610151746">
-    <img alt="Updated 15 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Oct, til: TIL: I worked on the valid anagram problem by building a letter … (#11); 15 Oct, til: TIL: I solved the majority element problem by counting each numb… (#10); 15 Oct, nyc-taxis: Add the MIT license and the author footer (#1); 15 Oct, delivery-time: Add the MIT license and the author footer (#1). Assistant deployed 15 Oct, assistant CI passing, portfolio online. Today I learned (15 Oct 2026): I worked on the valid anagram problem by building a letter count dictionary for each string and returning `box==box2`, since two dictionaries compare equal when they hold the same keys with the same counts." src="./assets/live-light.svg?v=202610151746" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610151748">
+    <img alt="Updated 15 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Oct, til: TIL: I worked on the valid anagram problem by building a letter … (#11); 15 Oct, til: TIL: I solved the majority element problem by counting each numb… (#10); 15 Oct, nyc-taxis: Add the MIT license and the author footer (#1); 15 Oct, delivery-time: Add the MIT license and the author footer (#1). Assistant deployed 15 Oct, assistant CI passing, portfolio online. Today I learned (15 Oct 2026): I worked on the valid anagram problem by building a letter count dictionary for each string and returning `box==box2`, since two dictionaries compare equal when they hold the same keys with the same counts." src="./assets/live-light.svg?v=202610151748" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -69,7 +69,7 @@
 <a href="https://shubham-kumar-singh.vercel.app/#education">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/education-dark.svg">
-    <img alt="Education. MSc Artificial Intelligence and Computer Science, Northeastern University London, Jan 2026 to Jan 2027, in progress. Postgraduate Diploma, Computer Science, IIIT Bangalore, 96.25%, CGPA 3.85 out of 4.0. Bachelor of Computer Applications, Chandigarh University, 2021 to 2024. Diploma, Computer Science and Engineering, Kalinga University, Raipur, 81%, first division. Certifications: Advanced Certificate in Data Science with NLP, IIIT Bangalore and upGrad; Foundations of Responsible AI, Northeastern University; AWS Cloud Technical Essentials; Google Foundations of Cybersecurity; upGrad Python Bootcamp." src="./assets/education-light.svg" width="100%">
+    <img alt="Education. MSc Artificial Intelligence and Computer Science, Northeastern University London, Jan 2026 to Jan 2027, in progress, with a dissertation on guardrails for LLM agents. Postgraduate Diploma, Computer Science, IIIT Bangalore, 96.25%, CGPA 3.85 out of 4.0. Bachelor of Computer Applications, Chandigarh University, 2021 to 2024. Diploma, Computer Science and Engineering, Kalinga University, Raipur, 81%, first division. Certifications: Advanced Certificate in Data Science with NLP, IIIT Bangalore and upGrad; Foundations of Responsible AI, Northeastern University; AWS Cloud Technical Essentials; Google Foundations of Cybersecurity; upGrad Python Bootcamp." src="./assets/education-light.svg" width="100%">
   </picture>
 </a>
 
