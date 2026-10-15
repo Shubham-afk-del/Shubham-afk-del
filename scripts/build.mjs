@@ -457,9 +457,10 @@ function track(t, stations, { holdAt = -1, fork = false } = {}) {
     }
   });
 
-  // The packet, with a fading trail behind it.
+  // The packet, with a fading trail behind it. A still image shows it resting
+  // at the first station; the animation replaces that position as it runs.
   parts.push(
-    `<g>${motion}<rect x="-46" y="-3" width="44" height="6" rx="3" fill="url(#trail)"/>` +
+    `<g transform="translate(${x0} ${y})">${motion}<rect x="-46" y="-3" width="44" height="6" rx="3" fill="url(#trail)"/>` +
       `<circle r="11" fill="${t.accent}" opacity="0.22"/><circle r="6" fill="${t.accent}"/><circle r="2.4" fill="#fff6dc"/></g>`,
   );
   return parts.join("");
