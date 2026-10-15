@@ -108,7 +108,7 @@ export const certifications = [
 
 /**
  * PMFBY premiums per year in crore rupees, from the per-year query in my
- * SQL_Farmers_Insurance_Analysis repo (summary_queries.sql), recomputed from
+ * Farmers-Insurance-SQL repo (summary_queries.sql), recomputed from
  * the course's data.csv on 15 Oct 2026. The farmers' share fell every year.
  */
 export const pmfby = [

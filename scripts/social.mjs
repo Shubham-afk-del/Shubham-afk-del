@@ -20,11 +20,11 @@ mkdirSync(OUT, { recursive: true });
 
 const PREVIEWS = [
   { repo: "portfolio-assistant", figure: "work-assistant" },
-  { repo: "Fraudulent_Claim_Detection", figure: "work-fraud" },
-  { repo: "Predicting_Employee_Retention", figure: "work-retention" },
+  { repo: "Fraudulent-Claim-Detection", figure: "work-fraud" },
+  { repo: "Employee-Retention-Prediction", figure: "work-retention" },
   { repo: "Delivery-Time-Prediction", figure: "work-delivery" },
   { repo: "NYC-Taxi-EDA", figure: "work-taxis" },
-  { repo: "SQL_Farmers_Insurance_Analysis", figure: "work-farmers" },
+  { repo: "Farmers-Insurance-SQL", figure: "work-farmers" },
   { repo: USER, figure: "header" },
 ];
 
