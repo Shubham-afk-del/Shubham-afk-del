@@ -87,9 +87,10 @@ let seq = 0;
 /**
  * The card every figure sits on, with its mood: by day a cream-to-peach
  * gradient under a soft sun, by night indigo ink with a violet nebula and a
- * field of twinkling stars. A still image shows all of it, minus the twinkle.
+ * sparse field of stars. Only the header's stars twinkle (`twinkle`, with
+ * twice as many); a still image shows all of it, minus the twinkle.
  */
-export function card(t, width, height, radius = 22, { decor = true } = {}) {
+export function card(t, width, height, radius = 22, { decor = true, twinkle = false } = {}) {
   const id = `c${(seq += 1)}`;
   const day = t.name === "light";
   const big = Math.max(width, height);
@@ -105,14 +106,17 @@ export function card(t, width, height, radius = 22, { decor = true } = {}) {
       `<circle cx="${r1(width * 0.88)}" cy="${r1(-height * 0.12)}" r="${r1(big * 0.5)}" fill="url(#${id}s)"/>` +
       `<circle cx="${r1(width * 0.08)}" cy="${r1(height * 1.05)}" r="${r1(big * 0.42)}" fill="url(#${id}w)"/>`;
     if (!day) {
-      // Stars: a deterministic scatter, each with its own twinkle.
+      // Stars: a deterministic scatter; in the header each has its own twinkle.
       const rand = mulberry32(Math.round(width * 7 + height * 13));
-      const count = Math.round((width * height) / 16000);
+      const count = Math.round((width * height) / (twinkle ? 16000 : 32000));
       for (let i = 0; i < count; i += 1) {
         const x = r1(8 + rand() * (width - 16));
         const y = r1(8 + rand() * (height - 16));
         const r = r1(0.45 + rand() * rand() * 0.9);
-        inner += `<circle class="tw" cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${r1(0.2 + rand() * 0.35)}" style="animation-duration:${r1(2.2 + rand() * 3.5)}s;animation-delay:-${r1(rand() * 5)}s"/>`;
+        const opacity = r1(0.2 + rand() * 0.35);
+        inner += twinkle
+          ? `<circle class="tw" cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}" style="animation-duration:${r1(2.2 + rand() * 3.5)}s;animation-delay:-${r1(rand() * 5)}s"/>`
+          : `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}"/>`;
       }
     }
     parts.push(`<g clip-path="url(#${id}k)">${inner}</g>`);
@@ -121,8 +125,10 @@ export function card(t, width, height, radius = 22, { decor = true } = {}) {
   parts.push(
     `<rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="${radius}" fill="none" stroke="${t.line}" stroke-width="2"/>`,
     `<path d="M${radius + 6} 2.5H${width - radius - 6}" stroke="#fff" stroke-opacity="${day ? 0.9 : 0.09}" stroke-width="1.5" stroke-linecap="round"/>`,
-    `<style>.tw{animation:tw 3s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.12}50%{opacity:.75}}@media (prefers-reduced-motion: reduce){.tw{animation:none}}</style>`,
   );
+  if (twinkle && !day) {
+    parts.push(`<style>.tw{animation:tw 3s ease-in-out infinite}@keyframes tw{0%,100%{opacity:.12}50%{opacity:.75}}@media (prefers-reduced-motion: reduce){.tw{animation:none}}</style>`);
+  }
   return parts.join("");
 }
 

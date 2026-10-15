@@ -6,7 +6,6 @@
 <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fff0e3"/></linearGradient></defs>
 <rect x="1.5" y="1.5" width="156" height="85" rx="42.5" fill="url(#bg)" stroke="#e2b79a" stroke-width="3"/>
 <path d="M44 4.5H115" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round"/>
-<clipPath id="bs"><rect x="1" y="1" width="157" height="86" rx="43"/></clipPath><linearGradient id="bsg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffd59a" stop-opacity="0"/><stop offset="0.5" stop-color="#ffd59a" stop-opacity="0.7"/><stop offset="1" stop-color="#ffd59a" stop-opacity="0"/></linearGradient><g clip-path="url(#bs)"><g transform="skewX(-20)"><rect x="-420" y="-60" width="320" height="208" fill="url(#bsg)" opacity="0"><set attributeName="opacity" to="1" begin="1.6400000000000001s"/><animate attributeName="x" values="-420;579;579" keyTimes="0;0.42;1" dur="5.5s" begin="1.6400000000000001s" repeatCount="indefinite"/></rect></g></g>
 <g transform="translate(32 28)"><path d="M8 4H19L25 10V28H8Z" fill="none" stroke="#1c1410" stroke-width="3" stroke-linejoin="round"/><path d="M19 4V10H25M12 16H21M12 21H21" fill="none" stroke="#1c1410" stroke-width="2.6" stroke-linecap="round"/></g>
 <g fill="#1c1410" transform="translate(80 53.5) scale(0.027 -0.027)"><use href="#d67"/><use href="#d86" x="769"/></g>
 </svg>

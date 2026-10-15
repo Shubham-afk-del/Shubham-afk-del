@@ -19,11 +19,10 @@ const OUT = new URL("../assets/social/", import.meta.url);
 mkdirSync(OUT, { recursive: true });
 
 const PREVIEWS = [
-  { repo: "portfolio-assistant", figure: "work-assistant" },
+  { repo: "portfolio-assistant", figure: "featured" },
   { repo: "Fraudulent-Claim-Detection", figure: "work-fraud" },
   { repo: "Employee-Retention-Prediction", figure: "work-retention" },
   { repo: "Delivery-Time-Prediction", figure: "work-delivery" },
-  { repo: "NYC-Taxi-EDA", figure: "work-taxis" },
   { repo: "Farmers-Insurance-SQL", figure: "work-farmers" },
   { repo: USER, figure: "header" },
 ];
