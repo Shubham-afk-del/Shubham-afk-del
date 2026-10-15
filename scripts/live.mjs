@@ -12,12 +12,13 @@ import { fit } from "./lib/text.mjs";
 
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 const NAMES = {
-  "LR_Delivery_Time_Prediction_-Shubham-Kumar-Singh-": "delivery-time",
-  EDA_Optimising_NYC_Taxis_Shubham_Kumar_Singh: "nyc-taxis",
+  "Delivery-Time-Prediction": "delivery-time",
+  "NYC-Taxi-EDA": "nyc-taxis",
   Fraudulent_Claim_Detection: "fraud-claims",
   Predicting_Employee_Retention: "employee-retention",
   SQL_Farmers_Insurance_Analysis: "farmers-sql",
-  Notes_App_AE2: "notes-app",
+  "SvelteKit-Notes-App": "notes-app",
+  "Community-Vaccination-Tracker": "vaccination-tracker",
 };
 
 async function gh(path) {
