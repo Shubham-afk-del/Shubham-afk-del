@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610151747">
-    <img alt="My contribution graph for the last year: 144 contributions on 11 days. A snake takes a random route through every day, new each morning, eats the 11 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610151747" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610151954">
+    <img alt="My contribution graph for the last year: 148 contributions on 11 days. A snake takes a random route through every day, new each morning, eats the 11 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610151954" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
