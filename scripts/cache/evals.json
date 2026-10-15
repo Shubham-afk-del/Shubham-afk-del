@@ -1,9 +1,9 @@
 {
-  "cases": 77,
-  "passed": 74,
-  "injections": "10/10",
-  "recall10": 0.98,
-  "mrr": 0.9333333333333332,
-  "firstWordP50": 2387,
-  "measuredAt": "2026-10-11T13:48:28.663Z"
+  "cases": 86,
+  "passed": 77,
+  "injections": "8/10",
+  "recall10": 0.9852941176470589,
+  "mrr": 0.9140522875816993,
+  "firstWordP50": 11779,
+  "measuredAt": "2026-10-15T08:14:25.198Z"
 }
