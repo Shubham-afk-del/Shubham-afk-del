@@ -952,7 +952,7 @@ async function figures() {
       // Fraudulent-Claim-Detection: README and notebook outputs, validation set of 300 claims.
       n: 3,
       file: "work-fraud",
-      kind: "ML · classification",
+      kind: "case study · classification",
       title: "Fraudulent claim detection",
       summary: "A tuned random forest hit 0.982 accuracy in training, then lost to plain logistic regression on held-out claims.",
       motif: overfitSlope,
@@ -966,7 +966,7 @@ async function figures() {
       // Employee-Retention-Prediction: README and notebook outputs, odds ratios of the final model.
       n: 4,
       file: "work-retention",
-      kind: "ML · explainable",
+      kind: "case study · explainable ML",
       title: "Predicting employee retention",
       summary: "Logistic regression on employee records, read as odds ratios so HR can see what goes with staying.",
       motif: oddsBars,
@@ -979,7 +979,7 @@ async function figures() {
     {
       n: 5,
       file: "work-delivery",
-      kind: "ML · regression",
+      kind: "case study · regression",
       title: "Delivery-time prediction",
       summary: "Linear regression over Porter orders. Cutting from 12 features to 8 with RFE lowered the score.",
       motif: featureTiles,
@@ -992,7 +992,7 @@ async function figures() {
     {
       n: 6,
       file: "work-taxis",
-      kind: "data · EDA",
+      kind: "case study · EDA",
       title: "Optimising NYC taxis",
       summary: "EDA of 2023 taxi trips. Three figures turned out to use placeholder data, so I published corrections.",
       motif: hourRing,
@@ -1007,7 +1007,7 @@ async function figures() {
       n: 7,
       file: "work-farmers",
       wide: true,
-      kind: "data · SQL",
+      kind: "case study · SQL",
       title: "Farmers' insurance in SQL",
       summary: "29 questions on India's crop insurance scheme, answered in MySQL and rechecked in pandas.",
       motif: farmersMotif,
