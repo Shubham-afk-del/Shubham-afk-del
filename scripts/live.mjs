@@ -14,9 +14,9 @@ const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 const NAMES = {
   "Delivery-Time-Prediction": "delivery-time",
   "NYC-Taxi-EDA": "nyc-taxis",
-  Fraudulent_Claim_Detection: "fraud-claims",
-  Predicting_Employee_Retention: "employee-retention",
-  SQL_Farmers_Insurance_Analysis: "farmers-sql",
+  "Fraudulent-Claim-Detection": "fraud-claims",
+  "Employee-Retention-Prediction": "employee-retention",
+  "Farmers-Insurance-SQL": "farmers-sql",
   "SvelteKit-Notes-App": "notes-app",
   "Community-Vaccination-Tracker": "vaccination-tracker",
 };

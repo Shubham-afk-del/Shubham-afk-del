@@ -949,7 +949,7 @@ async function figures() {
       ],
     },
     {
-      // Fraudulent_Claim_Detection: README and notebook outputs, validation set of 300 claims.
+      // Fraudulent-Claim-Detection: README and notebook outputs, validation set of 300 claims.
       n: 3,
       file: "work-fraud",
       kind: "ML · classification",
@@ -963,7 +963,7 @@ async function figures() {
       ],
     },
     {
-      // Predicting_Employee_Retention: README and notebook outputs, odds ratios of the final model.
+      // Employee-Retention-Prediction: README and notebook outputs, odds ratios of the final model.
       n: 4,
       file: "work-retention",
       kind: "ML · explainable",
@@ -1003,7 +1003,7 @@ async function figures() {
       ],
     },
     {
-      // SQL_Farmers_Insurance_Analysis: README, summary_queries.sql and data.csv.
+      // Farmers-Insurance-SQL: README, summary_queries.sql and data.csv.
       n: 7,
       file: "work-farmers",
       wide: true,
