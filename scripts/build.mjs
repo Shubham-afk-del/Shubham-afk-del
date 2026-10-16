@@ -91,6 +91,7 @@ function figure(t, cx, cy, boxW, boxH) {
 function header(t) {
   const W = 1280;
   const H = 420;
+  const day = t.name === "light";
   const fig = { x: 700, y: 40, w: 516, h: 312 };
   const left = 64;
   const maxText = fig.x - left - 40;
@@ -102,14 +103,20 @@ function header(t) {
     text("Shubham", "display", nameSize, left - 4, 188, fill, { tracking: -1.2 }).svg +
     text("Kumar Singh", "display", nameSize, left - 4, 282, fill, { tracking: -1.2 }).svg;
 
-  // Aurora: soft radial glows that drift behind the figure and the name.
+  // Aurora: soft radial glows that drift behind the figure and the name. By
+  // night vermilion, gold and pink; by day only a faint vermilion haze.
+  const glows = day
+    ? [[t.accent, 0.08], [t.accent, 0.05], [t.accent, 0.04]]
+    : [[t.accent, 0.26], ["#ffb020", 0.16], ["#ff2e88", 0.12]];
+  // The light across the name runs from vermilion into gold by night, and stays vermilion by day.
+  const shine = day ? t.accent : "#ffc24d";
   const aurora =
     `<defs>` +
-    `<radialGradient id="au1"><stop offset="0" stop-color="${t.accent}" stop-opacity="0.26"/><stop offset="1" stop-color="${t.accent}" stop-opacity="0"/></radialGradient>` +
-    `<radialGradient id="au2"><stop offset="0" stop-color="#ffb020" stop-opacity="0.16"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/></radialGradient>` +
-    `<radialGradient id="au3"><stop offset="0" stop-color="#ff2e88" stop-opacity="0.12"/><stop offset="1" stop-color="#ff2e88" stop-opacity="0"/></radialGradient>` +
+    glows
+      .map(([color, opacity], i) => `<radialGradient id="au${i + 1}"><stop offset="0" stop-color="${color}" stop-opacity="${opacity}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`)
+      .join("") +
     `<clipPath id="cardclip"><rect x="2" y="2" width="${W - 4}" height="${H - 4}" rx="21"/></clipPath>` +
-    `<linearGradient id="nshine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}" stop-opacity="0"/><stop offset="0.45" stop-color="${t.accent}" stop-opacity="0.95"/><stop offset="0.6" stop-color="#ffc24d" stop-opacity="0.95"/><stop offset="1" stop-color="#ffc24d" stop-opacity="0"/></linearGradient>` +
+    `<linearGradient id="nshine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${t.accent}" stop-opacity="0"/><stop offset="0.45" stop-color="${t.accent}" stop-opacity="0.95"/><stop offset="0.6" stop-color="${shine}" stop-opacity="0.95"/><stop offset="1" stop-color="${shine}" stop-opacity="0"/></linearGradient>` +
     `<mask id="namemask"><g fill="#fff">${name("#fff")}</g></mask>` +
     `</defs>` +
     `<g clip-path="url(#cardclip)">` +
@@ -118,7 +125,8 @@ function header(t) {
     `<circle class="au a3" cx="300" cy="90" r="300" fill="url(#au3)"/>` +
     `</g>`;
 
-  // Dust: a few faint motes rising through the card.
+  // Dust: a few faint motes rising through the card. By day they rest
+  // hidden and show only in motion: still, on white, they read as specks.
   const rand = mulberry32(0xd057);
   let dust = "";
   for (let i = 0; i < 18; i += 1) {
@@ -127,7 +135,7 @@ function header(t) {
     const rad = r1(0.9 + rand() * 1.6);
     const dur = r1(7 + rand() * 7);
     const delay = r1(rand() * 8);
-    dust += `<circle class="mote" cx="${x}" cy="${y}" r="${rad}" fill="${i % 4 === 0 ? t.accent : t.fg}" style="animation-duration:${dur}s;animation-delay:-${delay}s"/>`;
+    dust += `<circle class="mote" cx="${x}" cy="${y}" r="${rad}" fill="${i % 4 === 0 ? t.accent : t.fg}"${day ? ' opacity="0"' : ""} style="animation-duration:${dur}s;animation-delay:-${delay}s"/>`;
   }
 
   const parts = [
@@ -150,7 +158,8 @@ function header(t) {
     `<g clip-path="url(#frame)">${figure(t, fig.x + fig.w / 2, fig.y + fig.h / 2 + 4, fig.w, fig.h)}</g>`,
     `<rect class="prog" x="${fig.x + 18}" y="${fig.y + fig.h - 1}" width="${fig.w - 36}" height="2" fill="${t.accent}" opacity="0.7"/>`,
     beam(t, W, H, 22, { dur: 9, begin: 0.4, len: 120 }),
-    beam(t, W, H, 22, { dur: 9, begin: 4.9, len: 120, color: "#ffb020" }),
+    // The second beam is gold by night; by day both are vermilion.
+    beam(t, W, H, 22, { dur: 9, begin: 4.9, len: 120, color: day ? t.accent : "#ffb020" }),
   ];
 
   // Caption: fig. 0, then the three states, lit in step with the loop.
@@ -235,18 +244,22 @@ function button(t, { label: str, icon, primary }) {
   const textW = measure(str, "display", size, -0.2);
   const w = Math.ceil(32 + 32 + 16 + textW + 36);
   const fg = primary ? t.accentFg : t.fg;
-  // Primary: a vermilion pill that warms toward orange, with a sheen now and
-  // then. Others: a raised pill, white into cream by day, ink into indigo by night.
-  const stops = primary
-    ? [t.accent, day ? "#ff7a2f" : "#ff8a3d"]
-    : day
-      ? ["#ffffff", "#fff0e3"]
-      : ["#17171d", "#0d0d11"];
+  // By night a raised pill: the primary warms from vermilion toward orange,
+  // the others run from ink into indigo. By day a flat one: vermilion for the
+  // primary, white with a hairline border for the others. The primary gets a
+  // sheen now and then, softer by day.
+  const stops = day ? null : primary ? [t.accent, "#ff8a3d"] : ["#17171d", "#0d0d11"];
+  const stroke = day && !primary ? 2 : 3; // the outline sits just inside the edge
   const parts = [
-    `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${stops[0]}"/><stop offset="1" stop-color="${stops[1]}"/></linearGradient></defs>`,
-    `<rect x="1.5" y="1.5" width="${w - 3}" height="${h - 3}" rx="${(h - 3) / 2}" fill="url(#bg)" stroke="${primary ? t.accent : t.strong}" stroke-width="3"/>`,
-    `<path d="M${h / 2} 4.5H${w - h / 2}" stroke="#fff" stroke-opacity="${primary ? 0.45 : day ? 1 : 0.12}" stroke-width="2" stroke-linecap="round"/>`,
-    primary ? sheen("bs", w, h, (h - 2) / 2, { dur: 6.5, begin: 1, opacity: 0.45 }) : "",
+    stops
+      ? `<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${stops[0]}"/><stop offset="1" stop-color="${stops[1]}"/></linearGradient></defs>`
+      : "",
+    `<rect x="${stroke / 2}" y="${stroke / 2}" width="${w - stroke}" height="${h - stroke}" rx="${(h - stroke) / 2}" fill="${stops ? "url(#bg)" : primary ? t.accent : t.elev}" stroke="${primary ? t.accent : t.strong}" stroke-width="${stroke}"/>`,
+    // A fine highlight along the top edge; a white pill has nothing for it to show on.
+    primary || !day
+      ? `<path d="M${h / 2} 4.5H${w - h / 2}" stroke="#fff" stroke-opacity="${primary ? 0.45 : 0.12}" stroke-width="2" stroke-linecap="round"/>`
+      : "",
+    primary ? sheen("bs", w, h, (h - 2) / 2, { dur: 6.5, begin: 1, opacity: day ? 0.3 : 0.45 }) : "",
     `<g transform="translate(32 ${h / 2 - 16})">${ICONS[icon](fg, "ping")}</g>`,
     text(str, "display", size, 32 + 32 + 16, h / 2 + 9.5, fg, { tracking: -0.2 }).svg,
   ];
@@ -746,7 +759,7 @@ const QUERY = [
 ];
 
 const SYNTAX = {
-  light: { kw: "#c13a0b", fn: "#9a5b00", num: "#6f4bd8", panel: "#fffdfa", bar: "#fff1e6" },
+  light: { kw: "#c13a0b", fn: "#9a5b00", num: "#6f4bd8", panel: "#ffffff", bar: "#f5f5f4" },
   dark: { kw: "#ff7a47", fn: "#ffb020", num: "#b39cff", panel: "#0a0a0f", bar: "#121219" },
 };
 
@@ -866,7 +879,7 @@ function farmersMotif(t) {
   const slot = (x1 - x0) / pmfby.length;
   const bw = 58;
   parts.push(
-    `<defs><linearGradient id="barg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${t.name === "light" ? "#efc0a0" : "#4a4a56"}"/><stop offset="1" stop-color="${t.name === "light" ? "#f7ddcc" : "#24242b"}"/></linearGradient></defs>`,
+    `<defs><linearGradient id="barg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${t.name === "light" ? t.strong : "#4a4a56"}"/><stop offset="1" stop-color="${t.name === "light" ? t.line : "#24242b"}"/></linearGradient></defs>`,
     `<rect x="${x0}" y="188" width="10" height="10" rx="2" fill="${t.accent}"/>`,
     label("farmers' share", 12, x0 + 18, 197.5, t.accentInk).svg,
     label("gross premium, crore rupees", 12, x1, 197.5, t.muted, { anchor: "end" }).svg,
