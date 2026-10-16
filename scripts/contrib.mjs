@@ -268,7 +268,7 @@ function render(t, cal, g) {
   const title = `${cal.totalContributions} contributions in the last year`;
   const tr = textRun(title, "text", 22, 48, 64);
   parts.push(`<g fill="${t.fg}" transform="${tr.transform}">${tr.uses}</g>`);
-  const fig = textRun("FIG. 5 · A NEW RANDOM ROUTE EVERY DAY", "mono", 14, W - 48, 62, { tracking: 1.7, anchor: "end" });
+  const fig = textRun("FIG. 6 · A NEW RANDOM ROUTE EVERY DAY", "mono", 14, W - 48, 62, { tracking: 1.7, anchor: "end" });
   parts.push(`<g fill="${t.muted}" transform="${fig.transform}">${fig.uses}</g>`);
 
   // Month and weekday labels.

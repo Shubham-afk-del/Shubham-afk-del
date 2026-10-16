@@ -60,11 +60,11 @@ export async function evals() {
 export const shortDate = (iso) =>
   new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Europe/London" });
 
-/** The about card: his own words from the portfolio. */
+/** The about card: his own words from the portfolio, cut to sit beside the numbers. */
 export const about = [
-  "For three years I was the person on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into concrete directory changes, and I approved every one. That tool is where AI stopped being a subject and became the work.",
-  "Now I'm doing an MSc in Artificial Intelligence and Computer Science at Northeastern University London. My dissertation tests guardrails for LLM agents: if a rule blocks one large refund, does the agent split it into many small ones that each pass?",
-  "I'm open to AI and ML internships, including summer 2027 or a placement that counts toward the MSc, and to full-time roles from February 2027.",
+  "For three years I was on the other end of the ticket: triaging fifty incidents a day, administering Active Directory and keeping SLAs green for enterprise clients. Near the end I built a Python tool that used a language model to turn prose access requests into directory changes, and I approved every one.",
+  "Now I'm doing an MSc in AI and Computer Science at Northeastern University London. My dissertation tests guardrails for LLM agents: if a rule blocks one large refund, does the agent split it into many small ones that each pass?",
+  "I'm open to AI and ML internships, including summer 2027 or an MSc placement, and to full-time roles from February 2027.",
 ];
 
 export const experience = [
