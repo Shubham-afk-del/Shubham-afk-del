@@ -1,28 +1,25 @@
 // Shared palette and SVG helpers. Two moods on the portfolio's own colours
-// (shubham-kumar-singh.vercel.app): a warm daylight, cream into peach under a
-// soft sun, and a night of ink and indigo with stars and a violet nebula.
-// Both keep one vermilion accent.
+// (shubham-kumar-singh.vercel.app): a calm daylight of paper white, warm greys
+// and hairline borders, and a night of ink and indigo with stars and a violet
+// nebula. Both keep one vermilion accent.
 
 import { measure, takeGlyphDefs, textRun } from "./text.mjs";
 
 export const THEMES = {
   light: {
     name: "light",
-    bg: "#fff8f0", // card gradient, top left: cream
-    bg2: "#ffe9d9", // card gradient, bottom right: peach
+    bg: "#ffffff", // card gradient, top left: paper white
+    bg2: "#f8f7f5", // card gradient, bottom right: a warm grey, barely there
     elev: "#ffffff",
-    line: "#f1d6c2",
-    strong: "#e2b79a",
-    fg: "#1c1410",
-    muted: "#6e5b4f", // 5.5:1 on the peach end of the card
-    accent: "#e8430c",
-    accentInk: "#c13a0b", // accent for small text, 5.1:1 on cream
+    line: "#e7e5e4",
+    strong: "#d6d3d1",
+    fg: "#1c1917",
+    muted: "#57534e", // 7.1:1 on the grey end of the card
+    accent: "#d83f0b", // the site's #e8430c a touch deeper, so white text on it is 4.5:1
+    accentInk: "#c13a0b", // accent for small text, 5.1:1 on the grey end
     accentFg: "#ffffff",
-    soft: "rgb(232 67 12 / 0.1)",
-    glow: "#ffb347", // the sun
-    wash: "#ff8a65", // a coral wash in the far corner
-    sheen: "#ffd59a",
-    gold: "#f5a524",
+    soft: "rgb(216 63 11 / 0.1)",
+    // No glow, wash, sheen or gold: by day the cards are plain paper.
   },
   dark: {
     name: "dark",
@@ -85,8 +82,8 @@ export function label(str, size, x, y, fill, opts = {}) {
 let seq = 0;
 
 /**
- * The card every figure sits on, with its mood: by day a cream-to-peach
- * gradient under a soft sun, by night indigo ink with a violet nebula and a
+ * The card every figure sits on, with its mood: by day plain paper, white
+ * into a barely warm grey, by night indigo ink with a violet nebula and a
  * sparse field of stars. Only the header's stars twinkle (`twinkle`, with
  * twice as many); a still image shows all of it, minus the twinkle.
  */
@@ -96,28 +93,30 @@ export function card(t, width, height, radius = 22, { decor = true, twinkle = fa
   const big = Math.max(width, height);
   const parts = [
     `<defs><linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${t.bg}"/><stop offset="1" stop-color="${t.bg2}"/></linearGradient>` +
-      `<radialGradient id="${id}s"><stop offset="0" stop-color="${t.glow}" stop-opacity="${day ? 0.42 : 0.2}"/><stop offset="1" stop-color="${t.glow}" stop-opacity="0"/></radialGradient>` +
-      `<radialGradient id="${id}w"><stop offset="0" stop-color="${t.wash}" stop-opacity="${day ? 0.16 : 0.1}"/><stop offset="1" stop-color="${t.wash}" stop-opacity="0"/></radialGradient>` +
-      `<clipPath id="${id}k"><rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="${radius}"/></clipPath></defs>`,
+      (day
+        ? ""
+        : `<radialGradient id="${id}s"><stop offset="0" stop-color="${t.glow}" stop-opacity="0.2"/><stop offset="1" stop-color="${t.glow}" stop-opacity="0"/></radialGradient>` +
+          `<radialGradient id="${id}w"><stop offset="0" stop-color="${t.wash}" stop-opacity="0.1"/><stop offset="1" stop-color="${t.wash}" stop-opacity="0"/></radialGradient>` +
+          `<clipPath id="${id}k"><rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="${radius}"/></clipPath>`) +
+      `</defs>`,
     `<rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="${radius}" fill="url(#${id}g)"/>`,
   ];
-  if (decor) {
+  // The night's nebula, a wash in the far corner and the stars.
+  if (decor && !day) {
     let inner =
       `<circle cx="${r1(width * 0.88)}" cy="${r1(-height * 0.12)}" r="${r1(big * 0.5)}" fill="url(#${id}s)"/>` +
       `<circle cx="${r1(width * 0.08)}" cy="${r1(height * 1.05)}" r="${r1(big * 0.42)}" fill="url(#${id}w)"/>`;
-    if (!day) {
-      // Stars: a deterministic scatter; in the header each has its own twinkle.
-      const rand = mulberry32(Math.round(width * 7 + height * 13));
-      const count = Math.round((width * height) / (twinkle ? 16000 : 32000));
-      for (let i = 0; i < count; i += 1) {
-        const x = r1(8 + rand() * (width - 16));
-        const y = r1(8 + rand() * (height - 16));
-        const r = r1(0.45 + rand() * rand() * 0.9);
-        const opacity = r1(0.2 + rand() * 0.35);
-        inner += twinkle
-          ? `<circle class="tw" cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}" style="animation-duration:${r1(2.2 + rand() * 3.5)}s;animation-delay:-${r1(rand() * 5)}s"/>`
-          : `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}"/>`;
-      }
+    // Stars: a deterministic scatter; in the header each has its own twinkle.
+    const rand = mulberry32(Math.round(width * 7 + height * 13));
+    const count = Math.round((width * height) / (twinkle ? 16000 : 32000));
+    for (let i = 0; i < count; i += 1) {
+      const x = r1(8 + rand() * (width - 16));
+      const y = r1(8 + rand() * (height - 16));
+      const r = r1(0.45 + rand() * rand() * 0.9);
+      const opacity = r1(0.2 + rand() * 0.35);
+      inner += twinkle
+        ? `<circle class="tw" cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}" style="animation-duration:${r1(2.2 + rand() * 3.5)}s;animation-delay:-${r1(rand() * 5)}s"/>`
+        : `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" opacity="${opacity}"/>`;
     }
     parts.push(`<g clip-path="url(#${id}k)">${inner}</g>`);
   }
