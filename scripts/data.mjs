@@ -93,13 +93,12 @@ export const skills = {
 
 export const education = [
   { title: "MSc Artificial Intelligence & Computer Science", school: "Northeastern University London · dissertation on guardrails for LLM agents", when: "Jan 2026 to Jan 2027", result: "In progress" },
-  { title: "Postgraduate Diploma, Computer Science", school: "IIIT Bangalore", when: "Jan 2025 to Jan 2026", result: "96.25% · CGPA 3.85 / 4.0", highlight: true },
+  { title: "Advanced Certificate Programme in Data Science", school: "IIIT Bangalore with upGrad · NLP specialisation", when: "Jan 2025 to Oct 2025", result: "CGPA 3.85 / 4.0", highlight: true },
   { title: "Bachelor of Computer Applications", school: "Chandigarh University", when: "Sep 2021 to Sep 2024", result: "Completed alongside full-time work" },
   { title: "Diploma, Computer Science & Engineering", school: "Kalinga University, Raipur", when: "2018 to 2021", result: "81% · first division" },
 ];
 
 export const certifications = [
-  { name: "Advanced Certificate in Data Science, NLP", issuer: "IIIT Bangalore and upGrad", date: "Oct 2025" },
   { name: "Foundations of Responsible AI", issuer: "Northeastern University", date: "Jan 2026" },
   { name: "AWS Cloud Technical Essentials", issuer: "Amazon Web Services", date: "Apr 2025" },
   { name: "Foundations of Cybersecurity", issuer: "Google", date: "Apr 2025" },
