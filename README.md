@@ -69,7 +69,7 @@
 <a href="https://shubham-kumar-singh.vercel.app/#education">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/education-dark.svg">
-    <img alt="Education. MSc Artificial Intelligence and Computer Science, Northeastern University London, Jan 2026 to Jan 2027, in progress, with a dissertation on guardrails for LLM agents. Postgraduate Diploma, Computer Science, IIIT Bangalore, 96.25%, CGPA 3.85 out of 4.0. Bachelor of Computer Applications, Chandigarh University, 2021 to 2024. Diploma, Computer Science and Engineering, Kalinga University, Raipur, 81%, first division. Certifications: Advanced Certificate in Data Science with NLP, IIIT Bangalore and upGrad; Foundations of Responsible AI, Northeastern University; AWS Cloud Technical Essentials; Google Foundations of Cybersecurity; upGrad Python Bootcamp." src="./assets/education-light.svg" width="100%">
+    <img alt="Education. MSc Artificial Intelligence and Computer Science, Northeastern University London, Jan 2026 to Jan 2027, in progress, with a dissertation on guardrails for LLM agents. Advanced Certificate Programme in Data Science, NLP specialisation, IIIT Bangalore with upGrad, Jan 2025 to Oct 2025, CGPA 3.85 out of 4.0. Bachelor of Computer Applications, Chandigarh University, 2021 to 2024. Diploma, Computer Science and Engineering, Kalinga University, Raipur, 81%, first division. Certifications: Foundations of Responsible AI, Northeastern University; AWS Cloud Technical Essentials; Google Foundations of Cybersecurity; upGrad Python Bootcamp." src="./assets/education-light.svg" width="100%">
   </picture>
 </a>
 

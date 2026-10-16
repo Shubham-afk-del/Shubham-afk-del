@@ -221,14 +221,14 @@ export function educationCard(t) {
     parts.push(label(`${c.issuer} · ${c.date}`, 12, split + 28, cy + 24, t.muted).svg);
     cy += 72;
   });
-  // IIIT Bangalore: 96.25% as a ring that fills.
+  // IIIT Bangalore: CGPA 3.85 of 4 as a ring that fills.
   const rx = split - 90;
   const ry = 134 + 92 + 14;
   const R = 26;
   parts.push(
     `<circle cx="${rx}" cy="${ry}" r="${R}" fill="none" stroke="${t.line}" stroke-width="6"/>`,
-    `<circle class="gauge" cx="${rx}" cy="${ry}" r="${R}" fill="none" stroke="${t.accent}" stroke-width="6" stroke-linecap="round" pathLength="100" stroke-dasharray="96.25 100" transform="rotate(-90 ${rx} ${ry})"/>`,
-    text("96", "display", 18, rx, ry + 6.5, t.fg, { anchor: "middle" }).svg,
+    `<circle class="gauge" cx="${rx}" cy="${ry}" r="${R}" fill="none" stroke="${t.accent}" stroke-width="6" stroke-linecap="round" pathLength="4" stroke-dasharray="3.85 4" transform="rotate(-90 ${rx} ${ry})"/>`,
+    text("3.85", "display", 16, rx, ry + 5.5, t.fg, { anchor: "middle" }).svg,
   );
   const H = Math.max(y, cy) + 6;
   parts.push(beam(t, W, H, 22, { dur: 11, begin: 0.9, len: 90 }));
@@ -236,7 +236,7 @@ export function educationCard(t) {
     .tick{animation:draw .5s ease-out both}
     .gauge{animation:fill 1.8s cubic-bezier(.2,.8,.2,1) both .4s}
     @keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
-    @keyframes fill{from{stroke-dashoffset:96.25}to{stroke-dashoffset:0}}
+    @keyframes fill{from{stroke-dashoffset:3.85}to{stroke-dashoffset:0}}
     @media (prefers-reduced-motion: reduce){.tick,.gauge{animation:none}}
   `;
   const desc = `${education.map((e) => `${e.title}, ${e.school}, ${e.when}, ${e.result}.`).join(" ")} Certifications: ${certifications.map((c) => `${c.name}, ${c.issuer}, ${c.date}`).join("; ")}.`;
