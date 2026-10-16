@@ -21,20 +21,24 @@ function heading(t, name, y, right, x = PAD) {
 }
 
 /**
- * A mono label in lines of at most `width` px, in its capitals and tracking,
- * balanced: the narrowest width that still needs no extra line, so a name
- * such as Tech Mahindra stays on one line instead of leaving a short last one.
+ * Lines of at most `width` px, balanced: the narrowest width that still needs
+ * no extra line, so a name such as Tech Mahindra stays on one line instead of
+ * leaving a short last one.
  */
-function labelLines(str, size, width) {
-  const upper = str.toUpperCase();
-  const count = wrap(upper, "mono", size, width, size * 0.12).length;
+function balanced(str, fontName, size, width, tracking = 0) {
+  const count = wrap(str, fontName, size, width, tracking).length;
   let [lo, hi] = [0, width];
   while (hi - lo > 0.5) {
     const mid = (lo + hi) / 2;
-    if (wrap(upper, "mono", size, mid, size * 0.12).length > count) lo = mid;
+    if (wrap(str, fontName, size, mid, tracking).length > count) lo = mid;
     else hi = mid;
   }
-  return wrap(upper, "mono", size, hi, size * 0.12);
+  return wrap(str, fontName, size, hi, tracking);
+}
+
+/** A mono label in its capitals and tracking, in balanced lines. */
+function labelLines(str, size, width) {
+  return balanced(str.toUpperCase(), "mono", size, width, size * 0.12);
 }
 
 /** The one phrase of my story that gets an underline, drawn once. */
@@ -43,13 +47,13 @@ const MARK = "I approved every one";
 /**
  * Four numbers beside the story: 3+ years across the roles in data.mjs, the
  * 2 to 5 h from the access-request figure, recall@10 from the assistant's
- * committed evals, and the IIIT Bangalore diploma's 96.25%.
+ * committed evals, and the CGPA on the IIIT Bangalore certificate programme.
  */
 const glance = (e) => [
   ["3+ yrs", "enterprise IT at Capgemini and Tech Mahindra"],
   ["2 to 5 h", "saved a week by my LLM access tool"],
   [e.recall10.toFixed(2), "recall@10 on my RAG assistant"],
-  ["96.25%", "PG Diploma, IIIT Bangalore"],
+  ["3.85/4", "CGPA, IIIT Bangalore data science"],
 ];
 
 export function aboutCard(t, e) {
@@ -116,7 +120,7 @@ const KEY_NOTE = /Python tool/;
 
 /**
  * Experience on a timeline, education beside it. The rail draws itself and
- * a comet runs down it now and then; the 96.25% ring fills once.
+ * a comet runs down it now and then; the CGPA ring fills once.
  */
 export function careerCard(t) {
   const split = 704; // the education column
@@ -169,10 +173,12 @@ export function careerCard(t) {
   const ew = W - PAD - ex;
   let ey = 140;
   education.forEach((ed, i) => {
-    parts.push(text(ed.title, "display", 21, ex, ey, t.fg, { tracking: -0.3 }).svg);
+    // The IIIT certificate's full name is wider than the column, so it breaks.
+    const title = balanced(ed.title, "display", 21, ew, -0.3);
+    title.forEach((ln, k) => parts.push(text(ln, "display", 21, ex, ey + k * 26, t.fg, { tracking: -0.3 }).svg));
     // The MSc's school line names the dissertation, which gets a line of its own.
     const school = measure(ed.school, "text", 18) > ew ? ed.school.split(" · ").map((s, k) => (k ? s[0].toUpperCase() + s.slice(1) : s)) : [ed.school];
-    let ly = ey;
+    let ly = ey + (title.length - 1) * 26;
     school.forEach((ln) => {
       ly += 25;
       parts.push(text(ln, "text", 18, ex, ly, t.muted).svg);
@@ -188,13 +194,14 @@ export function careerCard(t) {
       parts.push(text(ed.result, "mono", 15, ex, ly, result).svg);
     }
     if (ed.highlight) {
-      // 96.25% as a ring that fills, at the column's right edge.
+      // CGPA 3.85 of 4 as a ring that fills, at the column's right edge,
+      // level with the middle of the entry.
       const R = 22;
-      const [gx, gy] = [W - PAD - R - 3, ey + 32];
+      const [gx, gy] = [W - PAD - R - 3, (ey + ly) / 2 - 5.5];
       parts.push(
         `<circle cx="${gx}" cy="${gy}" r="${R}" fill="none" stroke="${t.line}" stroke-width="5.5"/>`,
-        `<circle class="gauge" cx="${gx}" cy="${gy}" r="${R}" fill="none" stroke="${t.accent}" stroke-width="5.5" stroke-linecap="round" pathLength="100" stroke-dasharray="96.25 100" transform="rotate(-90 ${gx} ${gy})"/>`,
-        text("96", "display", 15, gx, gy + 5.5, t.fg, { anchor: "middle" }).svg,
+        `<circle class="gauge" cx="${gx}" cy="${gy}" r="${R}" fill="none" stroke="${t.accent}" stroke-width="5.5" stroke-linecap="round" pathLength="4" stroke-dasharray="3.85 4" transform="rotate(-90 ${gx} ${gy})"/>`,
+        text("3.85", "display", 13, gx, gy + 4.5, t.fg, { anchor: "middle" }).svg,
       );
     }
     ey = ly + (i === education.length - 1 ? 0 : 46);
@@ -205,7 +212,7 @@ export function careerCard(t) {
     .rail{animation:draw 1.6s ease-out both}
     @keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
     .gauge{animation:fill 1.8s cubic-bezier(.2,.8,.2,1) .4s both}
-    @keyframes fill{from{stroke-dashoffset:96.25}to{stroke-dashoffset:0}}
+    @keyframes fill{from{stroke-dashoffset:3.85}to{stroke-dashoffset:0}}
     @media (prefers-reduced-motion: reduce){.rail,.gauge{animation:none}}
   `;
   const desc =
