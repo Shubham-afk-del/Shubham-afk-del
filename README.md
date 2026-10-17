@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610161331">
-    <img alt="Updated 16 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 16 Oct, notes-app: Ask Dependabot for weekly dependency updates (#1); 16 Oct, portfolio-assistant: Name the IIIT Bangalore credential as the certificate does; 16 Oct, til: TIL: I practised setting up an `AzureOpenAI` client in Python, r… (#14); 16 Oct, til: TIL: I solved the intersection of two arrays in Python by turnin… (#13). Assistant deployed 16 Oct, assistant CI passing, portfolio online. Today I learned (16 Oct 2026): I practised setting up an `AzureOpenAI` client in Python, reading the API key and endpoint from environment variables and passing `api_key`, `azure_endpoint` and `api_version` for a `gpt-5-mini` deployment. I haven't made a call with it yet." src="./assets/live-light.svg?v=202610161331" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610170929">
+    <img alt="Updated 17 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 16 Oct, notes-app: Ask Dependabot for weekly dependency updates (#1); 16 Oct, portfolio-assistant: Name the IIIT Bangalore credential as the certificate does; 16 Oct, til: TIL: I practised setting up an `AzureOpenAI` client in Python, r… (#14); 16 Oct, til: TIL: I solved the intersection of two arrays in Python by turnin… (#13). Assistant deployed 16 Oct, assistant CI passing, portfolio online. Today I learned (16 Oct 2026): I practised setting up an `AzureOpenAI` client in Python, reading the API key and endpoint from environment variables and passing `api_key`, `azure_endpoint` and `api_version` for a `gpt-5-mini` deployment. I haven't made a call with it yet." src="./assets/live-light.svg?v=202610170929" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610161331">
-    <img alt="My contribution graph for the last year: 164 contributions on 12 days. A snake takes a random route through every day, new each morning, eats the 12 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610161331" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610170929">
+    <img alt="My contribution graph for the last year: 172 contributions on 12 days. A snake takes a random route through every day, new each morning, eats the 12 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610170929" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
