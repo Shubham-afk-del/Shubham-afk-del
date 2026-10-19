@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610180943">
-    <img alt="Updated 18 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 18 Oct, til: TIL: LLM APIs (chained prompts): I asked the model for a difficu… (#19); 18 Oct, til: TIL: Top K Frequent Elements (hash map): I counted each number i… (#18); 17 Oct, portfolio-assistant: Use the final 17 Oct CV; 17 Oct, til: Give the 17 Oct notes a topic label and the reason behind each fix (#17). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (18 Oct 2026): **LLM APIs (chained prompts):** I asked the model for a difficult computer science question, read it from `response.choices[0].message.content`, and sent that text back as a fresh `user` message in a second `chat.completions.create` call. Each call is stateless, so the second answer only knows about the question because I put it in the new `messages` list myself." src="./assets/live-light.svg?v=202610180943" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610191055">
+    <img alt="Updated 19 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 18 Oct, til: TIL: LLM APIs (chained prompts): I asked the model for a difficu… (#19); 18 Oct, til: TIL: Top K Frequent Elements (hash map): I counted each number i… (#18); 17 Oct, portfolio-assistant: Use the final 17 Oct CV; 17 Oct, til: Give the 17 Oct notes a topic label and the reason behind each fix (#17). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (18 Oct 2026): **LLM APIs (chained prompts):** I asked the model for a difficult computer science question, read it from `response.choices[0].message.content`, and sent that text back as a fresh `user` message in a second `chat.completions.create` call. Each call is stateless, so the second answer only knows about the question because I put it in the new `messages` list myself." src="./assets/live-light.svg?v=202610191055" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610180943">
-    <img alt="My contribution graph for the last year: 188 contributions on 14 days. A snake takes a random route through every day, new each morning, eats the 14 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610180943" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610191055">
+    <img alt="My contribution graph for the last year: 193 contributions on 14 days. A snake takes a random route through every day, new each morning, eats the 14 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610191055" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
