@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610201010">
-    <img alt="Updated 20 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 19 Oct, til: TIL: Running Sum of 1d Array (prefix sum): I wrote `running_sum(… (#21); 18 Oct, til: TIL: LLM APIs (chained prompts): I asked the model for a difficu… (#19); 18 Oct, til: TIL: Top K Frequent Elements (hash map): I counted each number i… (#18); 17 Oct, portfolio-assistant: Use the final 17 Oct CV. Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (19 Oct 2026): **Running Sum of 1d Array (prefix sum):** I wrote `running_sum(nums)` that keeps a `total` variable, adds each `num` to it and appends the new total to `new_list`, and tested it on `[1,2,3,4]`, a longer list and an empty list. Carrying the total forward means each element is added once, so it runs in O(n) time with O(n) space for the output list, instead of re-summing the prefix for every index." src="./assets/live-light.svg?v=202610201010" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610211018">
+    <img alt="Updated 21 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 20 Oct, notes-app: Keep tabs in package.json (#13); 20 Oct, notes-app: Require Node 22.12, which the dependencies now need (#12); 20 Oct, til: TIL: Ran three small local models through Ollama with the same O… (#23); 20 Oct, til: TIL: Solved pivot index with a brute-force loop: at each index I… (#22). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (20 Oct 2026): Ran three small local models through Ollama with the same OpenAI client by pointing `base_url` at `http://localhost:11434/v1` (the key can be any string, here `ollama`), then looped over `granite3.1-dense:2b`, `llama3.2:3b-instruct-q4_0` and `qwen2.5:3b-instruct-q4_0` to collect their answers to one question." src="./assets/live-light.svg?v=202610211018" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610201010">
-    <img alt="My contribution graph for the last year: 198 contributions on 15 days. A snake takes a random route through every day, new each morning, eats the 15 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610201010" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610211018">
+    <img alt="My contribution graph for the last year: 207 contributions on 16 days. A snake takes a random route through every day, new each morning, eats the 16 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610211018" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
