@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610221019">
-    <img alt="Updated 22 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 22 Oct, til: TIL: Top K Frequent Elements (hash map + sort): I counted each n… (#25); 21 Oct, notes-app: Read the page URL from $app/state instead of $app/stores (#15); 20 Oct, notes-app: Keep tabs in package.json (#13); 20 Oct, notes-app: Require Node 22.12, which the dependencies now need (#12). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (22 Oct 2026): **Top K Frequent Elements (hash map + sort):** I counted each number in a dictionary `box`, then sorted `box.items()` with `key=lambda x: x[1]` and `reverse=True` and took the first `k` keys. Counting is one O(n) pass and sorting the m distinct numbers costs O(m log m), so a heap or bucket sort would be the next step to get below a full sort." src="./assets/live-light.svg?v=202610221019" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610231013">
+    <img alt="Updated 23 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 22 Oct, til: TIL: Top K Frequent Elements (hash map + sort): I counted each n… (#25); 21 Oct, notes-app: Read the page URL from $app/state instead of $app/stores (#15); 20 Oct, notes-app: Keep tabs in package.json (#13); 20 Oct, notes-app: Require Node 22.12, which the dependencies now need (#12). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (22 Oct 2026): **Top K Frequent Elements (hash map + sort):** I counted each number in a dictionary `box`, then sorted `box.items()` with `key=lambda x: x[1]` and `reverse=True` and took the first `k` keys. Counting is one O(n) pass and sorting the m distinct numbers costs O(m log m), so a heap or bucket sort would be the next step to get below a full sort." src="./assets/live-light.svg?v=202610231013" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610221019">
-    <img alt="My contribution graph for the last year: 211 contributions on 18 days. A snake takes a random route through every day, new each morning, eats the 18 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610221019" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610231013">
+    <img alt="My contribution graph for the last year: 211 contributions on 18 days. A snake takes a random route through every day, new each morning, eats the 18 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610231013" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
