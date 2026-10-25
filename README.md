@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610240937">
-    <img alt="Updated 24 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 23 Oct, til: TIL: LLM APIs (Azure OpenAI): I built an `AzureOpenAI` client fr… (#27); 23 Oct, til: TIL: Find Pivot Index (prefix sums, brute force first): I wrote … (#26); 22 Oct, til: TIL: Top K Frequent Elements (hash map + sort): I counted each n… (#25); 21 Oct, notes-app: Read the page URL from $app/state instead of $app/stores (#15). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (23 Oct 2026): **LLM APIs (Azure OpenAI):** I built an `AzureOpenAI` client from `api_key`, `azure_endpoint` and `api_version='2024-08-01-preview'`, loading the keys with `load_dotenv(override=True)` and `os.environ`, then sent a `messages` list with `'role': 'user'` to `client.chat.completions.create(model='gpt-5-mini')`. Keeping secrets in `.env` keeps them out of the notebook, and the same `chat.completions.create` call shape also works with the local Ollama client I tried earlier, so only the client setup changes between providers." src="./assets/live-light.svg?v=202610240937" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610250954">
+    <img alt="Updated 25 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 25 Oct, til: TIL: Linear regression (train/test split): I split eight data po… (#30); 25 Oct, til: TIL: LLM APIs (token usage, temperature): I read `prompt_tokens`… (#29); 24 Oct, notes-app: Import lib modules through #lib subpath imports (#18); 24 Oct, til: TIL: LLM APIs (message history, tokens): I wrapped `client.chat.… (#28). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (25 Oct 2026): **Linear regression (train/test split):** I split eight data points with `train_test_split(x, y, test_size=0.25, random_state=0)` and fit `LinearRegression` on the training part only. Keeping a test set back is what lets me check the model on data it has not seen, and `random_state` makes the split the same every run." src="./assets/live-light.svg?v=202610250954" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610240937">
-    <img alt="My contribution graph for the last year: 215 contributions on 19 days. A snake takes a random route through every day, new each morning, eats the 19 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610240937" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610250954">
+    <img alt="My contribution graph for the last year: 225 contributions on 21 days. A snake takes a random route through every day, new each morning, eats the 21 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610250954" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
