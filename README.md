@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610250954">
-    <img alt="Updated 25 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 25 Oct, til: TIL: Linear regression (train/test split): I split eight data po… (#30); 25 Oct, til: TIL: LLM APIs (token usage, temperature): I read `prompt_tokens`… (#29); 24 Oct, notes-app: Import lib modules through #lib subpath imports (#18); 24 Oct, til: TIL: LLM APIs (message history, tokens): I wrapped `client.chat.… (#28). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (25 Oct 2026): **Linear regression (train/test split):** I split eight data points with `train_test_split(x, y, test_size=0.25, random_state=0)` and fit `LinearRegression` on the training part only. Keeping a test set back is what lets me check the model on data it has not seen, and `random_state` makes the split the same every run." src="./assets/live-light.svg?v=202610250954" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610261116">
+    <img alt="Updated 26 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 26 Oct, til: TIL: LLM APIs (chat loop, streaming): I wrote `chat.py`, a termi… (#32); 26 Oct, til: TIL: Two Sum (hash map): I stored the index of each number in a … (#31); 25 Oct, til: TIL: Linear regression (train/test split): I split eight data po… (#30); 25 Oct, til: TIL: LLM APIs (token usage, temperature): I read `prompt_tokens`… (#29). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (26 Oct 2026): **LLM APIs (chat loop, streaming):** I wrote `chat.py`, a terminal chatbot that appends every user turn and model reply to `message` and prints the prompt and completion token counts after each answer, and in my Day 3 notebook I streamed a reply with `stream=True`, printing each `chunk.choices[0].delta.content or ''` as it arrives. The history list is the only memory the bot has, so the prompt grows every turn, and streaming shows the first words before the whole answer is ready." src="./assets/live-light.svg?v=202610261116" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610250954">
-    <img alt="My contribution graph for the last year: 225 contributions on 21 days. A snake takes a random route through every day, new each morning, eats the 21 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610250954" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610261116">
+    <img alt="My contribution graph for the last year: 229 contributions on 22 days. A snake takes a random route through every day, new each morning, eats the 22 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610261116" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
