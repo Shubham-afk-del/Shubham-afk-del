@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610261116">
-    <img alt="Updated 26 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 26 Oct, til: TIL: LLM APIs (chat loop, streaming): I wrote `chat.py`, a termi… (#32); 26 Oct, til: TIL: Two Sum (hash map): I stored the index of each number in a … (#31); 25 Oct, til: TIL: Linear regression (train/test split): I split eight data po… (#30); 25 Oct, til: TIL: LLM APIs (token usage, temperature): I read `prompt_tokens`… (#29). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (26 Oct 2026): **LLM APIs (chat loop, streaming):** I wrote `chat.py`, a terminal chatbot that appends every user turn and model reply to `message` and prints the prompt and completion token counts after each answer, and in my Day 3 notebook I streamed a reply with `stream=True`, printing each `chunk.choices[0].delta.content or ''` as it arrives. The history list is the only memory the bot has, so the prompt grows every turn, and streaming shows the first words before the whole answer is ready." src="./assets/live-light.svg?v=202610261116" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610271041">
+    <img alt="Updated 27 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 27 Oct, til: TIL: Logistic regression (classification): I fit `LogisticRegres… (#34); 27 Oct, til: TIL: LLM APIs (scripted conversation turns): I sent a `messages`… (#33); 26 Oct, til: TIL: LLM APIs (chat loop, streaming): I wrote `chat.py`, a termi… (#32); 26 Oct, til: TIL: Two Sum (hash map): I stored the index of each number in a … (#31). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (27 Oct 2026): **Logistic regression (classification):** I fit `LogisticRegression` on six points with two features each and labels `0` or `1`, then predicted the class of `[4, 1]` and `[0, 0]`. Unlike linear regression it predicts a class by turning a weighted sum into a probability between 0 and 1, which is why the targets are labels rather than numbers to estimate." src="./assets/live-light.svg?v=202610271041" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610261116">
-    <img alt="My contribution graph for the last year: 229 contributions on 22 days. A snake takes a random route through every day, new each morning, eats the 22 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610261116" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610271041">
+    <img alt="My contribution graph for the last year: 233 contributions on 23 days. A snake takes a random route through every day, new each morning, eats the 23 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610271041" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
