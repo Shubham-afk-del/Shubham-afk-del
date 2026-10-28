@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610271041">
-    <img alt="Updated 27 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 27 Oct, til: TIL: Logistic regression (classification): I fit `LogisticRegres… (#34); 27 Oct, til: TIL: LLM APIs (scripted conversation turns): I sent a `messages`… (#33); 26 Oct, til: TIL: LLM APIs (chat loop, streaming): I wrote `chat.py`, a termi… (#32); 26 Oct, til: TIL: Two Sum (hash map): I stored the index of each number in a … (#31). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (27 Oct 2026): **Logistic regression (classification):** I fit `LogisticRegression` on six points with two features each and labels `0` or `1`, then predicted the class of `[4, 1]` and `[0, 0]`. Unlike linear regression it predicts a class by turning a weighted sum into a probability between 0 and 1, which is why the targets are labels rather than numbers to estimate." src="./assets/live-light.svg?v=202610271041" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610281126">
+    <img alt="Updated 28 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 28 Oct, til: TIL: LLM APIs (raw HTTP, Groq): I called Ollama's chat endpoint … (#35); 27 Oct, notes-app: Upgrade to SvelteKit 3 with vite 8, vite-plugin-svelte 7 and adapter-auto 8 (#19); 27 Oct, til: TIL: Logistic regression (classification): I fit `LogisticRegres… (#34); 27 Oct, til: TIL: LLM APIs (scripted conversation turns): I sent a `messages`… (#33). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (28 Oct 2026): **LLM APIs (raw HTTP, Groq):** I called Ollama's chat endpoint by hand with `requests.post('http://localhost:11434/v1/chat/completions', json={...})` and read `r.json()['choices'][0]['message']['content']`, then pointed the OpenAI client at Groq with `base_url='https://api.groq.com/openai/v1'` to call `openai/gpt-oss-120b` with `reasoning_effort='low'`. Writing the request myself showed the SDK is a thin wrapper over one JSON POST, and `reasoning_effort` is just another field in that request, telling a reasoning model how much to think before it answers." src="./assets/live-light.svg?v=202610281126" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610271041">
-    <img alt="My contribution graph for the last year: 233 contributions on 23 days. A snake takes a random route through every day, new each morning, eats the 23 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610271041" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610281126">
+    <img alt="My contribution graph for the last year: 237 contributions on 24 days. A snake takes a random route through every day, new each morning, eats the 24 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610281126" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
