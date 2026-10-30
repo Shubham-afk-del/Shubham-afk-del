@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610291136">
-    <img alt="Updated 29 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 29 Oct, til: TIL: LLM-as-judge (reading the verdict): I practised the last st… (#37); 29 Oct, til: TIL: LLM APIs (one client, many providers): I wrote a `PROVIDERS… (#36); 28 Oct, til: TIL: LLM APIs (raw HTTP, Groq): I called Ollama's chat endpoint … (#35); 27 Oct, notes-app: Upgrade to SvelteKit 3 with vite 8, vite-plugin-svelte 7 and adapter-auto 8 (#19). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (29 Oct 2026): **LLM-as-judge (reading the verdict):** I practised the last step of a judge on a hand-written verdict: `json.loads('{'ranking':[3,1,2],'reason':'Answer 3 is correct'}')` turns the judge's text into a dict, and `verdict['ranking'][0]` gives the winning answer number. The ranking counts answers from 1 but Python lists start at 0, so `names[n-1]` maps answer 3 to `'gpt-oss-120b'`." src="./assets/live-light.svg?v=202610291136" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202610301127">
+    <img alt="Updated 30 Oct 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 29 Oct, til: TIL: LLM-as-judge (reading the verdict): I practised the last st… (#37); 29 Oct, til: TIL: LLM APIs (one client, many providers): I wrote a `PROVIDERS… (#36); 28 Oct, til: TIL: LLM APIs (raw HTTP, Groq): I called Ollama's chat endpoint … (#35); 27 Oct, notes-app: Upgrade to SvelteKit 3 with vite 8, vite-plugin-svelte 7 and adapter-auto 8 (#19). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (29 Oct 2026): **LLM-as-judge (reading the verdict):** I practised the last step of a judge on a hand-written verdict: `json.loads('{'ranking':[3,1,2],'reason':'Answer 3 is correct'}')` turns the judge's text into a dict, and `verdict['ranking'][0]` gives the winning answer number. The ranking counts answers from 1 but Python lists start at 0, so `names[n-1]` maps answer 3 to `'gpt-oss-120b'`." src="./assets/live-light.svg?v=202610301127" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610291136">
-    <img alt="My contribution graph for the last year: 241 contributions on 25 days. A snake takes a random route through every day, new each morning, eats the 25 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610291136" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202610301127">
+    <img alt="My contribution graph for the last year: 241 contributions on 25 days. A snake takes a random route through every day, new each morning, eats the 25 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202610301127" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
