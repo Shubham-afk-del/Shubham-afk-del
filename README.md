@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611031253">
-    <img alt="Updated 3 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 1 Nov, notes-app: Store notes as plain text so & is not shown as &amp; (#22); 1 Nov, til: Show each change in the report with the lines around it (#41); 30 Oct, til: TIL: FizzBuzz (order of checks): I wrote `fizzBuzz(n)` HackerRan… (#39); 30 Oct, til: TIL: Contains Duplicate (hash map count): I counted each number … (#38). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (30 Oct 2026): **FizzBuzz (order of checks):** I wrote `fizzBuzz(n)` HackerRank style, printing one line for each `i` in `range(1, n + 1)`, since `range` stops one before its end. The `i % 3 == 0 and i % 5 == 0` check has to come first: in an `if`/`elif` chain, 15 would otherwise stop at `i % 3 == 0` and print `Fizz` instead of `FizzBuzz`." src="./assets/live-light.svg?v=202611031253" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611041005">
+    <img alt="Updated 4 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 3 Nov, til: TIL: Contains Duplicate (set, stop at the first repeat): I rewro… (#44); 1 Nov, notes-app: Store notes as plain text so & is not shown as &amp; (#22); 1 Nov, til: Show each change in the report with the lines around it (#41); 30 Oct, til: TIL: FizzBuzz (order of checks): I wrote fizzBuzz(n) HackerRan… (#39). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (3 Nov 2026): Contains Duplicate (set, stop at the first repeat): I rewrote it with a set instead of a count dict: for each number I return True as soon as it is already in the set, otherwise box.add(i), and return False only after the loop. It stops at the first repeat instead of counting every number first, but the set can still grow to hold all n numbers, so the extra space is O(n), not O(1)." src="./assets/live-light.svg?v=202611041005" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611031253">
-    <img alt="My contribution graph for the last year: 251 contributions on 29 days. A snake takes a random route through every day, new each morning, eats the 29 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611031253" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611041005">
+    <img alt="My contribution graph for the last year: 254 contributions on 31 days. A snake takes a random route through every day, new each morning, eats the 31 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611041005" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
