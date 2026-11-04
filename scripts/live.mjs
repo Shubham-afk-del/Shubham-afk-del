@@ -21,6 +21,12 @@ const NAMES = {
   "Community-Vaccination-Tracker": "vaccination-tracker",
 };
 
+/**
+ * A note or commit title as plain text. Markdown's bold markers and code backticks
+ * mean nothing in the terminal, where they would print as stray symbols.
+ */
+const plain = (text) => text.replace(/\*\*(?=\S)(.+?)(?<=\S)\*\*/g, "$1").replaceAll("`", "");
+
 async function gh(path) {
   const res = await fetch(`https://api.github.com${path}`, {
     headers: {
@@ -55,7 +61,7 @@ async function latestCommits(count) {
         .map((c) => ({
           date: c.commit.author.date,
           repo: NAMES[repo.name] ?? repo.name,
-          subject: c.commit.message.split("\n")[0].trim(),
+          subject: plain(c.commit.message.split("\n")[0].trim()),
         })),
     ),
   );
@@ -93,7 +99,7 @@ async function latestTil() {
     if (!newest) continue;
     const [date, ...lines] = newest.split("\n");
     const notes = lines.filter((l) => l.startsWith("- "));
-    if (notes.length) return { date: date.trim(), note: notes.at(-1).slice(2) };
+    if (notes.length) return { date: date.trim(), note: plain(notes.at(-1).slice(2)) };
   }
   return null;
 }
