@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611071148">
-    <img alt="Updated 7 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 6 Nov, til: TIL: LLM-as-judge (truncated JSON): I built a small judge: I num… (#49); 6 Nov, til: TIL: Encode and Decode Strings (decode by slicing): I finished … (#48); 5 Nov, til: TIL: Encode and Decode Strings (length prefix, decode in progres… (#47); 4 Nov, til: Refuse a note whose bold label is already in the log (#45). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (6 Nov 2026): LLM-as-judge (truncated JSON): I built a small judge: I numbered the three models' answers with enumerate(..., start=1), asked qwen/qwen3.8-27b on Groq to rank them and reply with JSON only, parsed the reply with json.loads and mapped each ranked number back to its model with [n-1]. On one run the judge's reason rambled and the reply stopped before its closing quote, probably at max_tokens=500, so json.loads failed with JSONDecodeError; the token budget has to fit the whole answer, and the reply needs a check before it is parsed." src="./assets/live-light.svg?v=202611071148" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611081159">
+    <img alt="Updated 8 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 7 Nov, til: TIL: Loss (mean squared error): I computed MSE by hand with NumP… (#50); 6 Nov, til: TIL: LLM-as-judge (truncated JSON): I built a small judge: I num… (#49); 6 Nov, til: TIL: Encode and Decode Strings (decode by slicing): I finished … (#48); 5 Nov, til: TIL: Encode and Decode Strings (length prefix, decode in progres… (#47). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (7 Nov 2026): Loss (mean squared error): I computed MSE by hand with NumPy: errors = actual - guess, then (errors**2).mean(). For actual values [50, 60, 70], the close guess [48, 63, 69] gives 4.67 and the far guess [40, 75, 60] gives 141.67. Squaring stops plus and minus errors from cancelling out and makes one big miss cost far more than several small ones, so a lower loss means predictions that sit closer to the real values." src="./assets/live-light.svg?v=202611081159" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611071148">
-    <img alt="My contribution graph for the last year: 263 contributions on 33 days. A snake takes a random route through every day, new each morning, eats the 33 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611071148" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611081159">
+    <img alt="My contribution graph for the last year: 266 contributions on 34 days. A snake takes a random route through every day, new each morning, eats the 34 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611081159" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
