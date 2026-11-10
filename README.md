@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611091402">
-    <img alt="Updated 9 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 9 Nov, til: TIL: LLM APIs (chat loop from memory): I rebuilt my chat loop tw… (#52); 7 Nov, til: TIL: Loss (mean squared error): I computed MSE by hand with NumP… (#50); 6 Nov, til: TIL: LLM-as-judge (truncated JSON): I built a small judge: I num… (#49); 6 Nov, til: TIL: Encode and Decode Strings (decode by slicing): I finished … (#48). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (9 Nov 2026): LLM APIs (chat loop from memory): I rebuilt my chat loop twice, on Azure gpt-5-mini and then from memory on a local Ollama model, and three slips taught me the most. The messages list has to be created before the while True loop, because creating it inside wipes the history every turn, so the model forgets earlier turns such as my name. Importing load_dotenv is not enough: os.environ[...] raised a KeyError until I actually called load_dotenv(override=True). And with Ollama, model must be the model's name, such as qwen2.5:3b-instruct-q4_0, while 'ollama' is only the placeholder API key." src="./assets/live-light.svg?v=202611091402" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611101336">
+    <img alt="Updated 10 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 10 Nov, ai-engineering-practice: Add my practice notebooks from the agentic AI course; 9 Nov, til: TIL: LLM APIs (chat loop from memory): I rebuilt my chat loop tw… (#52); 7 Nov, til: TIL: Loss (mean squared error): I computed MSE by hand with NumP… (#50); 6 Nov, til: TIL: LLM-as-judge (truncated JSON): I built a small judge: I num… (#49). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (9 Nov 2026): LLM APIs (chat loop from memory): I rebuilt my chat loop twice, on Azure gpt-5-mini and then from memory on a local Ollama model, and three slips taught me the most. The messages list has to be created before the while True loop, because creating it inside wipes the history every turn, so the model forgets earlier turns such as my name. Importing load_dotenv is not enough: os.environ[...] raised a KeyError until I actually called load_dotenv(override=True). And with Ollama, model must be the model's name, such as qwen2.5:3b-instruct-q4_0, while 'ollama' is only the placeholder API key." src="./assets/live-light.svg?v=202611101336" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611091402">
-    <img alt="My contribution graph for the last year: 268 contributions on 35 days. A snake takes a random route through every day, new each morning, eats the 35 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611091402" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611101336">
+    <img alt="My contribution graph for the last year: 270 contributions on 36 days. A snake takes a random route through every day, new each morning, eats the 36 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611101336" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
