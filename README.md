@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611111249">
-    <img alt="Updated 11 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 11 Nov, til: TIL: Structured output (Pydantic validation): I defined CVinfo(… (#55); 11 Nov, til: TIL: Product of Array Except Self (brute force): For each positi… (#54); 10 Nov, ai-engineering-practice: Add my practice notebooks from the agentic AI course; 9 Nov, til: TIL: LLM APIs (chat loop from memory): I rebuilt my chat loop tw… (#52). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (11 Nov 2026): Structured output (Pydantic validation): I defined CVinfo(BaseModel) with name: str, skills: list[str] and years_experience: int, plus ConfigDict(extra='forbid') so unknown keys are rejected, and ran model_validate_json on two JSON strings. The good one became a CVinfo object and 'years_experience': '4 years' raised a ValidationError (int_parsing), so a model's JSON can be checked for shape and types before my code trusts it, though Pydantic cannot tell whether the facts in it are true." src="./assets/live-light.svg?v=202611111249" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611121351">
+    <img alt="Updated 12 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 12 Nov, til: TIL: Structured output (JSON schema from Pydantic): I turned my … (#56); 11 Nov, til: TIL: Structured output (Pydantic validation): I defined CVinfo(… (#55); 11 Nov, til: TIL: Product of Array Except Self (brute force): For each positi… (#54); 10 Nov, ai-engineering-practice: Add my practice notebooks from the agentic AI course. Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (12 Nov 2026): Structured output (JSON schema from Pydantic): I turned my CVinfo model into a schema with CVinfo.model_json_schema() and passed it to a local qwen2.5:3b through Ollama as response_format={'type': 'json_schema', 'json_schema': {..., 'strict': True}}. From one sentence about Priya it returned {'name': 'priya sharma', 'skills': ['python', 'SQL', 'Tableau', 'FastAPI'], 'years_experience': 4}, which CVinfo.model_validate_json accepted, so the schema tells the model the shape and Pydantic checks that it came back that way. My retry loop for replies that fail validation is still unfinished." src="./assets/live-light.svg?v=202611121351" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611111249">
-    <img alt="My contribution graph for the last year: 274 contributions on 37 days. A snake takes a random route through every day, new each morning, eats the 37 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611111249" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611121351">
+    <img alt="My contribution graph for the last year: 276 contributions on 38 days. A snake takes a random route through every day, new each morning, eats the 38 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611121351" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
