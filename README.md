@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611131313">
-    <img alt="Updated 13 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 13 Nov, til: TIL: Structured output (retries and their limits): I ran my CV e… (#57); 12 Nov, til: TIL: Structured output (JSON schema from Pydantic): I turned my … (#56); 11 Nov, til: TIL: Structured output (Pydantic validation): I defined CVinfo(… (#55); 11 Nov, til: TIL: Product of Array Except Self (brute force): For each positi… (#54). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (13 Nov 2026): Structured output (retries and their limits): I ran my CV extractor with a retry loop that sends a failed ValidationError back to the model, then broke it on purpose. With plain JSON mode and a weak prompt, Priya's '4 years' was fixed on the second try but Rahul's reply kept failing and raised ValueError after three tries, and with max_tokens=12 every attempt stopped at {'name': 'Priya Sharma', ' with finish_reason 'length', which, as I predicted, no retry can fix. Pydantic also accepted Rahul's 3 years of experience when the real answer is 6, because it checks the format, not the facts." src="./assets/live-light.svg?v=202611131313" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611141218">
+    <img alt="Updated 14 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 13 Nov, til: TIL: Structured output (retries and their limits): I ran my CV e… (#57); 12 Nov, til: TIL: Structured output (JSON schema from Pydantic): I turned my … (#56); 11 Nov, til: TIL: Structured output (Pydantic validation): I defined CVinfo(… (#55); 11 Nov, til: TIL: Product of Array Except Self (brute force): For each positi… (#54). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (13 Nov 2026): Structured output (retries and their limits): I ran my CV extractor with a retry loop that sends a failed ValidationError back to the model, then broke it on purpose. With plain JSON mode and a weak prompt, Priya's '4 years' was fixed on the second try but Rahul's reply kept failing and raised ValueError after three tries, and with max_tokens=12 every attempt stopped at {'name': 'Priya Sharma', ' with finish_reason 'length', which, as I predicted, no retry can fix. Pydantic also accepted Rahul's 3 years of experience when the real answer is 6, because it checks the format, not the facts." src="./assets/live-light.svg?v=202611141218" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611131313">
-    <img alt="My contribution graph for the last year: 278 contributions on 39 days. A snake takes a random route through every day, new each morning, eats the 39 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611131313" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611141218">
+    <img alt="My contribution graph for the last year: 278 contributions on 39 days. A snake takes a random route through every day, new each morning, eats the 39 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611141218" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
