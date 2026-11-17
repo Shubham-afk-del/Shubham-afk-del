@@ -19,6 +19,7 @@ const NAMES = {
   "Farmers-Insurance-SQL": "farmers-sql",
   "SvelteKit-Notes-App": "notes-app",
   "Community-Vaccination-Tracker": "vaccination-tracker",
+  "ai-engineering-practice": "ai-practice",
 };
 
 /**
