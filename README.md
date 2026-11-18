@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611171439">
-    <img alt="Updated 17 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Nov, ai-practice: Add the L04 structured output notebook; 15 Nov, til: TIL: Features and labels (array shapes): I put four days into x… (#59); 13 Nov, til: TIL: Structured output (retries and their limits): I ran my CV e… (#57); 12 Nov, til: TIL: Structured output (JSON schema from Pydantic): I turned my … (#56). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (15 Nov 2026): Features and labels (array shapes): I put four days into x = np.array([[10, 0], [20, 0], [20, 1], [30, 1]]), one row per day with two features (temperature and rain), and the cups sold into y. x.shape printed (4, 2), which reads as rows are examples and columns are features, while y holds one label per row. A hand-made model like cups = 100 - 2 * temp + 20 * rain turns one row's features into a prediction: 70 cups for a rainy day at 25°C." src="./assets/live-light.svg?v=202611171439" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611181416">
+    <img alt="Updated 18 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 15 Nov, ai-practice: Add the L04 structured output notebook; 15 Nov, til: TIL: Features and labels (array shapes): I put four days into x… (#59); 13 Nov, til: TIL: Structured output (retries and their limits): I ran my CV e… (#57); 12 Nov, til: TIL: Structured output (JSON schema from Pydantic): I turned my … (#56). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (15 Nov 2026): Features and labels (array shapes): I put four days into x = np.array([[10, 0], [20, 0], [20, 1], [30, 1]]), one row per day with two features (temperature and rain), and the cups sold into y. x.shape printed (4, 2), which reads as rows are examples and columns are features, while y holds one label per row. A hand-made model like cups = 100 - 2 * temp + 20 * rain turns one row's features into a prediction: 70 cups for a rainy day at 25°C." src="./assets/live-light.svg?v=202611181416" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611171440">
-    <img alt="My contribution graph for the last year: 285 contributions on 41 days. A snake takes a random route through every day, new each morning, eats the 41 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611171440" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611181416">
+    <img alt="My contribution graph for the last year: 285 contributions on 42 days. A snake takes a random route through every day, new each morning, eats the 42 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611181416" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
