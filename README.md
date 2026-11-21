@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611201409">
-    <img alt="Updated 20 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 20 Nov, til: TIL: Chat UI (Gradio, first launch): I launched my first gr.Cha… (#64); 20 Nov, til: TIL: Gradient descent (chai sugar): I wrote complaint(sugar) = … (#63); 19 Nov, til: TIL: What is ML (a rule vs a learned model): I wrote a hand rule… (#62); 15 Nov, ai-practice: Add the L04 structured output notebook. Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (20 Nov 2026): Chat UI (Gradio, first launch): I launched my first gr.ChatInterface(fn=chat) for a chai stall helper. Gradio calls chat(message, history) on every turn, and my function rebuilds the model's messages from the system prompt, the earlier turns in history and the new message. It does not answer yet, because the streaming loop that should yield the growing reply is still outside the function, so that is the next fix." src="./assets/live-light.svg?v=202611201409" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611211334">
+    <img alt="Updated 21 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 20 Nov, til: TIL: Chat UI (Gradio, first launch): I launched my first gr.Cha… (#64); 20 Nov, til: TIL: Gradient descent (chai sugar): I wrote complaint(sugar) = … (#63); 19 Nov, til: TIL: What is ML (a rule vs a learned model): I wrote a hand rule… (#62); 15 Nov, ai-practice: Add the L04 structured output notebook. Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (20 Nov 2026): Chat UI (Gradio, first launch): I launched my first gr.ChatInterface(fn=chat) for a chai stall helper. Gradio calls chat(message, history) on every turn, and my function rebuilds the model's messages from the system prompt, the earlier turns in history and the new message. It does not answer yet, because the streaming loop that should yield the growing reply is still outside the function, so that is the next fix." src="./assets/live-light.svg?v=202611211334" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611201409">
-    <img alt="My contribution graph for the last year: 291 contributions on 44 days. A snake takes a random route through every day, new each morning, eats the 44 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611201409" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611211334">
+    <img alt="My contribution graph for the last year: 292 contributions on 45 days. A snake takes a random route through every day, new each morning, eats the 45 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611211334" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
