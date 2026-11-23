@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611231036">
-    <img alt="Updated 23 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 22 Nov, ai-practice: Add the L05 Gradio chat notebook; 22 Nov, til: TIL: Gradio streaming (L05 finished): I finished my chai stall c… (#66); 20 Nov, til: TIL: Chat UI (Gradio, first launch): I launched my first gr.Cha… (#64); 20 Nov, til: TIL: Gradient descent (chai sugar): I wrote complaint(sugar) = … (#63). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (22 Nov 2026): Gradio streaming (L05 finished): I finished my chai stall chat UI with a line-by-line walk-through, typing every line myself. chat(message, history) now calls the model with stream=True and works as a generator: each chunk's delta.content or '' goes onto a reply string and I yield reply, the whole answer so far, so Gradio redraws the reply as it arrives. The bot remembers because Gradio passes history in on every turn and I put it between the system prompt and the new message. It answered 'Your name is Shubham! A samosa is 25 rupees.' from a name I gave it earlier in the chat." src="./assets/live-light.svg?v=202611231036" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611231610">
+    <img alt="Updated 23 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 22 Nov, ai-practice: Add the L05 Gradio chat notebook; 22 Nov, til: TIL: Gradio streaming (L05 finished): I finished my chai stall c… (#66); 20 Nov, til: TIL: Chat UI (Gradio, first launch): I launched my first gr.Cha… (#64); 20 Nov, til: TIL: Gradient descent (chai sugar): I wrote complaint(sugar) = … (#63). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (22 Nov 2026): Gradio streaming (L05 finished): I finished my chai stall chat UI with a line-by-line walk-through, typing every line myself. chat(message, history) now calls the model with stream=True and works as a generator: each chunk's delta.content or '' goes onto a reply string and I yield reply, the whole answer so far, so Gradio redraws the reply as it arrives. The bot remembers because Gradio passes history in on every turn and I put it between the system prompt and the new message. It answered 'Your name is Shubham! A samosa is 25 rupees.' from a name I gave it earlier in the chat." src="./assets/live-light.svg?v=202611231610" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611231036">
-    <img alt="My contribution graph for the last year: 296 contributions on 47 days. A snake takes a random route through every day, new each morning, eats the 47 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611231036" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611231610">
+    <img alt="My contribution graph for the last year: 297 contributions on 47 days. A snake takes a random route through every day, new each morning, eats the 47 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611231610" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
