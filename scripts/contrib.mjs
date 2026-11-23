@@ -271,19 +271,24 @@ function render(t, cal, g) {
   const fig = textRun("FIG. 6 · A NEW RANDOM ROUTE EVERY DAY", "mono", 14, W - 48, 62, { tracking: 1.7, anchor: "end" });
   parts.push(`<g fill="${t.muted}" transform="${fig.transform}">${fig.uses}</g>`);
 
-  // Month and weekday labels.
-  let lastLabelCol = -9;
+  // Month labels, like GitHub's: each month's name above the first week that
+  // starts in it. A name only gives way when it would run into the next one,
+  // which can only happen to the first month of the year shown, so a two-week
+  // month at the start no longer hides the full month after it.
+  const starts = [];
   cal.weeks.forEach((week, col) => {
-    const firstDay = week.contributionDays[0];
-    const month = new Date(`${firstDay.date}T00:00:00Z`).getUTCMonth();
-    const prev = col > 0 ? new Date(`${cal.weeks[col - 1].contributionDays[0].date}T00:00:00Z`).getUTCMonth() : -1;
-    if (month !== prev && col - lastLabelCol >= 3 && col < cal.weeks.length - 1) {
-      const name = new Date(Date.UTC(2000, month, 1)).toLocaleString("en-US", { month: "short", timeZone: "UTC" });
-      const run = textRun(name, "text", 15, g.x0 + col * PITCH, g.y0 - 14);
-      parts.push(`<g fill="${t.fg}" transform="${run.transform}">${run.uses}</g>`);
-      lastLabelCol = col;
-    }
+    const month = new Date(`${week.contributionDays[0].date}T00:00:00Z`).getUTCMonth();
+    if (starts.at(-1)?.month !== month) starts.push({ col, month });
   });
+  starts.forEach(({ col, month }, i) => {
+    const name = new Date(Date.UTC(2000, month, 1)).toLocaleString("en-US", { month: "short", timeZone: "UTC" });
+    const room = starts[i + 1] ? (starts[i + 1].col - col) * PITCH : Infinity;
+    if (col === cal.weeks.length - 1 || measure(name, "text", 15) + 6 > room) return;
+    const run = textRun(name, "text", 15, g.x0 + col * PITCH, g.y0 - 14);
+    parts.push(`<g fill="${t.fg}" transform="${run.transform}">${run.uses}</g>`);
+  });
+
+  // Weekday labels.
   [
     [1, "Mon"],
     [3, "Wed"],
