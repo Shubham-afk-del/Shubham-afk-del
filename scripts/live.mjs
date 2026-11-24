@@ -28,6 +28,13 @@ const NAMES = {
  */
 const plain = (text) => text.replace(/\*\*(?=\S)(.+?)(?<=\S)\*\*/g, "$1").replaceAll("`", "");
 
+/**
+ * A commit title without its repo's name in front. Every note in til is titled
+ * "TIL: ...", and the card already prints the repo, so it read "til · TIL: ...".
+ */
+const withoutRepo = (subject, repo) =>
+  subject.toLowerCase().startsWith(`${repo.toLowerCase()}: `) ? subject.slice(repo.length + 2) : subject;
+
 async function gh(path) {
   const res = await fetch(`https://api.github.com${path}`, {
     headers: {
@@ -62,7 +69,7 @@ async function latestCommits(count) {
         .map((c) => ({
           date: c.commit.author.date,
           repo: NAMES[repo.name] ?? repo.name,
-          subject: plain(c.commit.message.split("\n")[0].trim()),
+          subject: withoutRepo(plain(c.commit.message.split("\n")[0].trim()), repo.name),
         })),
     ),
   );
