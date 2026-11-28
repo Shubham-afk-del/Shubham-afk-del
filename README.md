@@ -56,8 +56,8 @@
 <!-- LIVE:START -->
 <a href="https://github.com/Shubham-afk-del/portfolio-assistant">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611271517">
-    <img alt="Updated 27 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 27 Nov, til: Valid Palindrome (clean, then two pointers): I built a clea… (#67); 22 Nov, ai-practice: Add the L05 Gradio chat notebook; 22 Nov, til: Gradio streaming (L05 finished): I finished my chai stall c… (#66); 20 Nov, til: Chat UI (Gradio, first launch): I launched my first gr.Cha… (#64). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (27 Nov 2026): Valid Palindrome (clean, then two pointers): I built a cleaned copy that keeps only isalnum() characters, lowercased, then moved L from the start and R from the end while L < R, returning False at the first pair of letters that differ. It took nine hints from my coach, and two bugs taught me the most: L == R compares positions, not letters, so 'abc' came out True, and return True has to wait until after the loop, or 'abca' passes after one matching pair. One pass to clean and one to compare is O(n) time, not O(n²), and the cleaned copy is O(n) space." src="./assets/live-light.svg?v=202611271517" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/live-dark.svg?v=202611281420">
+    <img alt="Updated 28 Nov 2026. The assistant, measured 15 Oct 2026: recall at 10 of 0.99 with hybrid search and reranking, 77 of 86 answer checks passed, 8 of 10 prompt injections resisted, first word after 11.8 seconds at the median. Latest commits: 28 Nov, til: LLM-as-judge (the shape you ask for): I wrote my judge loop… (#68); 27 Nov, til: Valid Palindrome (clean, then two pointers): I built a clea… (#67); 22 Nov, ai-practice: Add the L05 Gradio chat notebook; 22 Nov, til: Gradio streaming (L05 finished): I finished my chai stall c… (#66). Assistant deployed 17 Oct, assistant CI passing, portfolio online. Today I learned (28 Nov 2026): LLM-as-judge (the shape you ask for): I wrote my judge loop from memory with a new question of my own, how many t's are in 'letters'. My first letter asked the judge for explanations and showed the format as {'ranking':[answer,numbers]}, so gpt-5-mini sent the ranking back as dicts holding the answers, and entries[n - 1] crashed with a TypeError. My coach's rule fixed it: the shape you ask for must be the shape your code reads. With {'ranking': [answer numbers], 'reason': 'one sentence'} in the letter, it returned [2, 1] and both numbers mapped to the right model names." src="./assets/live-light.svg?v=202611281420" width="100%">
   </picture>
 </a>
 <!-- LIVE:END -->
@@ -65,8 +65,8 @@
 <!-- CONTRIB:START -->
 <a href="https://github.com/Shubham-afk-del">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611271517">
-    <img alt="My contribution graph for the last year: 302 contributions on 50 days. A snake takes a random route through every day, new each morning, eats the 50 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611271517" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/contrib-dark.svg?v=202611281420">
+    <img alt="My contribution graph for the last year: 308 contributions on 51 days. A snake takes a random route through every day, new each morning, eats the 51 days I contributed and grows, paints the rest green, then the graph fades back to the real data." src="./assets/contrib-light.svg?v=202611281420" width="100%">
   </picture>
 </a>
 <!-- CONTRIB:END -->
